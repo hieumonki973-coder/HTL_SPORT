@@ -1,0 +1,96 @@
+.contact-banner {
+  text-align: center;
+  padding: 30px;
+  background: url('/assets/banner.jpg') no-repeat center;
+  background-size: cover;
+}
+
+.contact-main {
+  display: flex;
+  gap: 40px;
+  padding: 40px;
+  flex-wrap: wrap;
+}
+
+.contact-left {
+  flex: 1;
+  min-width: 300px;
+}
+
+.contact-left form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-left input,
+.contact-left textarea {
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+.contact-left button {
+  padding: 12px;
+  background: linear-gradient(to right, #f15f79, #b24592);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.contact-right {
+  flex: 1;
+  min-width: 300px;
+}
+
+.newsletter {
+  background: #f8f4ee;
+  text-align: center;
+  padding: 30px;
+  margin-top: 50px;
+}
+
+.newsletter input {
+  padding: 10px;
+  width: 250px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.newsletter button {
+  padding: 10px 20px;
+  background: linear-gradient(to right, #b4ec51, #429321);
+  color: white;
+  border: none;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 40px;
+  background: #f3ede6;
+  gap: 40px;
+  justify-content: space-around;
+}
+
+.footer-column h4 {
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.footer-column p {
+  margin: 5px 0;
+  color: #777;
+}
+
+.footer-bottom {
+  background: #f3ede6;
+  padding: 15px;
+  text-align: center;
+  font-size: 14px;
+  border-top: 1px solid #ddd;
+}

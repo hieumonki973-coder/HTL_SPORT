@@ -1,0 +1,50 @@
+<p style="color:red">BÌNH LUẬN</p>
+
+<div class="review-wrapper">
+
+  <!-- ===== HEADER ===== -->
+  <div class="review-header">
+    <h3>Đánh giá sản phẩm</h3>
+
+    <button class="btn-write-review"
+            (click)="showForm = !showForm">
+      ✍ Viết đánh giá
+    </button>
+  </div>
+
+  <!-- ===== DANH SÁCH REVIEW ===== -->
+  <div *ngIf="reviews.length; else noReview">
+    <div class="review-item" *ngFor="let r of reviews">
+      <div class="stars">
+        <span *ngFor="let s of [1,2,3,4,5]"
+              [class.active]="s <= r.rating">★</span>
+      </div>
+      <p>{{ r.comment }}</p>
+    </div>
+  </div>
+
+  <ng-template #noReview>
+    <p>Chưa có đánh giá nào.</p>
+  </ng-template>
+
+  <!-- ===== FORM ĐÁNH GIÁ ===== -->
+  <div class="review-form" *ngIf="showForm">
+
+    <h4>Đánh giá của bạn</h4>
+
+    <div class="rating-select">
+      <span *ngFor="let s of [1,2,3,4,5]"
+            (click)="rating = s"
+            [class.active]="s <= rating">★</span>
+    </div>
+
+    <textarea [(ngModel)]="comment"
+              placeholder="Nhận xét của bạn...">
+    </textarea>
+
+    <button (click)="submitReview()">
+      Gửi đánh giá
+    </button>
+  </div>
+
+</div>

@@ -1,0 +1,56 @@
+[{
+  "_id": {
+    "$oid": "696e08765ecb682d9bab516c"
+  },
+  "name": "nongvanhieu",
+  "fullName": "nongvanhieu",
+  "email": "hieumonki973@gmail.com",
+  "password": "$2b$10$yDZit1O1hZiqTUeGtgVVN.DoIq7kruH7osaPolOtutjt78Yz7yy4y",
+  "phone": "0344610973",
+  "admin": true,
+  "status": "pending",
+  "createdAt": {
+    "$date": "2026-01-19T10:33:26.482Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-19T10:33:26.482Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66a111111111111111111111"
+  },
+  "ten": "Nguyễn Văn A",
+  "email": "a@gmail.com",
+  "matkhau": "$2b$10$hashedpassword",
+  "vaitro": "user",
+  "trangthai": "active",
+  "hinhanh": null,
+  "created_at": {
+    "$date": "2025-01-01T00:00:00.000Z"
+  },
+  "updated_at": {
+    "$date": "2025-01-01T00:00:00.000Z"
+  },
+  "deleted_at": null
+},
+{
+  "_id": {
+    "$oid": "6985824f6337eecb2bbe12b5"
+  },
+  "name": "admin01",
+  "fullName": "ShopFunsport",
+  "email": "hieuwuthing@gmail.com",
+  "password": "$2b$10$u94fUtUiwHHqQgDXaViG6udDygnmMC7Gmy1.Vcbr7Se4.acR/Ffra",
+  "phone": "0356978973",
+  "admin": true,
+  "status": "pending",
+  "createdAt": {
+    "$date": "2026-02-06T05:55:27.391Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-06T05:55:27.391Z"
+  },
+  "__v": 0
+}]

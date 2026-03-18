@@ -1,0 +1,27 @@
+
+  <div class="product-content">
+    <h2>Danh sách sản phẩm</h2>
+    <div class="product-table">
+      <table>
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Ảnh</th>
+            <th>Tên Danh Mục</th>
+            <th>Tồn kho</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let category of categories; index as i">
+            <td>{{i+1}}</td>
+            <td><img [src]="category.image" alt="product"></td>
+            <td>{{category.name}}</td>
+            <td>12</td>
+            <td><button>Sửa</button> <button (click)="onDelete(category._id)">Xoá</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+

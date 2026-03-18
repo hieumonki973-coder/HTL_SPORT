@@ -1,0 +1,218 @@
+<div class="address-picker">
+
+  <!-- ═══════════════ LOADING ═══════════════ -->
+  <div *ngIf="isLoading" class="addr-loading">
+    <span class="spinner-sm"></span> Đang tải địa chỉ…
+  </div>
+
+  <!-- ═══════════════ CHƯA CÓ ĐỊA CHỈ NÀO ═══════════════ -->
+  <div *ngIf="!isLoading && addresses.length === 0 && !isFormOpen" class="addr-empty">
+    <div class="addr-empty-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+        <circle cx="12" cy="9" r="2.5"/>
+      </svg>
+    </div>
+    <p class="addr-empty-text">Bạn chưa có địa chỉ giao hàng</p>
+    <button type="button" class="btn-add-first" (click)="openAddForm()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+      </svg>
+      Thêm địa chỉ mới
+    </button>
+  </div>
+
+  <!-- ═══════════════ CÓ ĐỊA CHỈ: HIỂN THỊ DROPDOWN ═══════════════ -->
+  <div *ngIf="!isLoading && addresses.length > 0 && !isFormOpen" class="addr-selector">
+
+    <!-- Địa chỉ đang chọn (trigger dropdown) -->
+    <div class="addr-selected" (click)="toggleDropdown()" [class.open]="isDropdownOpen">
+      <div class="addr-selected-content" *ngIf="selectedAddress; else noSelected">
+        <div class="addr-selected-top">
+          <span class="addr-name">{{ selectedAddress.fullName }}</span>
+          <span class="addr-phone">{{ selectedAddress.phone }}</span>
+          <span class="addr-badge-default" *ngIf="selectedAddress.isDefault">Mặc định</span>
+        </div>
+        <div class="addr-selected-bottom">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="addr-pin">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+            <circle cx="12" cy="9" r="2.5"/>
+          </svg>
+          {{ getFullAddress(selectedAddress) }}
+        </div>
+      </div>
+      <ng-template #noSelected>
+        <span class="addr-placeholder">Chọn địa chỉ giao hàng…</span>
+      </ng-template>
+      <!-- Chevron -->
+      <svg class="addr-chevron" [class.rotated]="isDropdownOpen"
+           viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </div>
+
+    <!-- Dropdown list -->
+    <div class="addr-dropdown" *ngIf="isDropdownOpen">
+
+      <!-- Danh sách địa chỉ -->
+      <div class="addr-list">
+        <div
+          class="addr-item"
+          *ngFor="let addr of addresses"
+          [class.selected]="selectedAddress?._id === addr._id"
+          (click)="selectAddress(addr)"
+        >
+          <div class="addr-item-radio">
+            <div class="radio-dot" [class.active]="selectedAddress?._id === addr._id"></div>
+          </div>
+          <div class="addr-item-body">
+            <div class="addr-item-top">
+              <span class="addr-name">{{ addr.fullName }}</span>
+              <span class="addr-phone">{{ addr.phone }}</span>
+              <span class="addr-badge-default" *ngIf="addr.isDefault">Mặc định</span>
+            </div>
+            <div class="addr-item-full">
+              {{ getFullAddress(addr) }}
+            </div>
+          </div>
+          <!-- Actions -->
+          <div class="addr-item-actions" (click)="$event.stopPropagation()">
+            <button type="button" class="btn-act edit" title="Sửa" (click)="openEditForm(addr, $event)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
+                <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+              </svg>
+            </button>
+            <button type="button" class="btn-act star" title="Đặt mặc định" (click)="setDefault(addr, $event)" *ngIf="!addr.isDefault">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            </button>
+            <button type="button" class="btn-act delete" title="Xóa" (click)="deleteAddress(addr, $event)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a1 1 0 011-1h4a1 1 0 011 1v2"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nút thêm địa chỉ mới -->
+      <div class="addr-dropdown-footer">
+        <button type="button" class="btn-add-new" (click)="openAddForm()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+          Thêm địa chỉ mới
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ FORM THÊM / SỬA ĐỊA CHỈ ═══════════════ -->
+  <div *ngIf="isFormOpen" class="addr-form-wrap">
+    <div class="addr-form-header">
+      <h3>{{ editingAddress ? 'Cập nhật địa chỉ' : 'Thêm địa chỉ mới' }}</h3>
+      <button type="button" class="btn-close-form" (click)="closeForm()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <form [formGroup]="addressForm" class="addr-form">
+
+      <!-- Row: Họ tên + SĐT -->
+      <div class="addr-form-row">
+        <div class="addr-form-group">
+          <label>Họ và tên <span class="req">*</span></label>
+          <input type="text" formControlName="fullName" placeholder="Nguyễn Văn A"
+            [class.is-error]="addressForm.get('fullName')?.invalid && addressForm.get('fullName')?.touched"/>
+          <small class="error-msg" *ngIf="addressForm.get('fullName')?.invalid && addressForm.get('fullName')?.touched">
+            Vui lòng nhập họ và tên
+          </small>
+        </div>
+        <div class="addr-form-group">
+          <label>Số điện thoại <span class="req">*</span></label>
+          <input type="tel" formControlName="phone" placeholder="09xxxxxxxx"
+            [class.is-error]="addressForm.get('phone')?.invalid && addressForm.get('phone')?.touched"/>
+          <small class="error-msg" *ngIf="addressForm.get('phone')?.invalid && addressForm.get('phone')?.touched">
+            Số điện thoại 10 số hợp lệ
+          </small>
+        </div>
+      </div>
+
+      <!-- Row: Tỉnh / Thành phố -->
+      <div class="addr-form-group">
+        <label>Tỉnh / Thành phố <span class="req">*</span></label>
+        <select formControlName="tinh" [class.is-error]="addressForm.get('tinh')?.invalid && addressForm.get('tinh')?.touched">
+          <option value="">-- Chọn Tỉnh / Thành phố --</option>
+          <option *ngFor="let p of provinces" [value]="p">{{ p }}</option>
+        </select>
+        <small class="error-msg" *ngIf="addressForm.get('tinh')?.invalid && addressForm.get('tinh')?.touched">
+          Vui lòng chọn tỉnh / thành phố
+        </small>
+      </div>
+
+      <!-- Row: Quận + Phường -->
+      <div class="addr-form-row">
+        <div class="addr-form-group">
+          <label>Quận / Huyện <span class="req">*</span></label>
+          <input type="text" formControlName="quan" placeholder="Quận 1 / Huyện Bình Chánh"
+            [class.is-error]="addressForm.get('quan')?.invalid && addressForm.get('quan')?.touched"/>
+          <small class="error-msg" *ngIf="addressForm.get('quan')?.invalid && addressForm.get('quan')?.touched">
+            Vui lòng nhập quận / huyện
+          </small>
+        </div>
+        <div class="addr-form-group">
+          <label>Phường / Xã <span class="req">*</span></label>
+          <input type="text" formControlName="phuong" placeholder="Phường Bến Nghé"
+            [class.is-error]="addressForm.get('phuong')?.invalid && addressForm.get('phuong')?.touched"/>
+          <small class="error-msg" *ngIf="addressForm.get('phuong')?.invalid && addressForm.get('phuong')?.touched">
+            Vui lòng nhập phường / xã
+          </small>
+        </div>
+      </div>
+
+      <!-- Row: Tên đường + Số nhà -->
+      <div class="addr-form-row">
+        <div class="addr-form-group">
+          <label>Tên đường <span class="req">*</span></label>
+          <input type="text" formControlName="duong" placeholder="Nguyễn Huệ"
+            [class.is-error]="addressForm.get('duong')?.invalid && addressForm.get('duong')?.touched"/>
+          <small class="error-msg" *ngIf="addressForm.get('duong')?.invalid && addressForm.get('duong')?.touched">
+            Vui lòng nhập tên đường
+          </small>
+        </div>
+        <div class="addr-form-group">
+          <label>Số nhà / Tòa nhà <span class="req">*</span></label>
+          <input type="text" formControlName="soNha" placeholder="12B, Tòa A"
+            [class.is-error]="addressForm.get('soNha')?.invalid && addressForm.get('soNha')?.touched"/>
+          <small class="error-msg" *ngIf="addressForm.get('soNha')?.invalid && addressForm.get('soNha')?.touched">
+            Vui lòng nhập số nhà
+          </small>
+        </div>
+      </div>
+
+      <!-- Đặt làm mặc định -->
+      <label class="addr-default-check">
+        <input type="checkbox" formControlName="isDefault"/>
+        <span class="checkmark"></span>
+        Đặt làm địa chỉ mặc định
+      </label>
+
+      <!-- Buttons -->
+      <div class="addr-form-actions">
+        <button type="button" class="btn-cancel" (click)="closeForm()">Hủy</button>
+        <button type="button" class="btn-save" (click)="saveAddress()" [disabled]="isSaving">
+          <span *ngIf="!isSaving">{{ editingAddress ? 'Cập nhật' : 'Lưu địa chỉ' }}</span>
+          <span *ngIf="isSaving" class="btn-loading">
+            <span class="spinner-sm"></span> Đang lưu…
+          </span>
+        </button>
+      </div>
+
+    </form>
+  </div>
+
+</div>

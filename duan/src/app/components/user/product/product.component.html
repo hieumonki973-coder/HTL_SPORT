@@ -1,0 +1,128 @@
+<main class="main-content">
+  <!-- Sidebar lọc sản phẩm -->
+  <aside class="sidebar">
+    <!-- LỌC THEO GIÁ -->
+    <div class="filter-section">
+      <h3 class="filter-title">Lọc theo giá</h3>
+      <div class="price-range-container">
+        <div class="price-slider">
+          <input type="range" [min]="priceMin" [max]="priceMax" [(ngModel)]="priceRangeMin" (change)="filterProducts()"
+            class="range-input range-min" />
+          <input type="range" [min]="priceMin" [max]="priceMax" [(ngModel)]="priceRangeMax" (change)="filterProducts()"
+            class="range-input range-max" />
+          <div class="price-range-track" (click)="onSliderTrackClick($event)"></div>
+        </div>
+
+        <div class="price-display">
+          <span class="price-label">Giá:</span>
+          <span class="price-value">{{ formatPrice(priceRangeMin) }}</span>
+          <span class="price-separator">—</span>
+          <span class="price-value">{{ formatPrice(priceRangeMax) }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DANH MỤC SẢN PHẨM -->
+    <div class="filter-section">
+      <h3 class="filter-title">Danh mục sản phẩm</h3>
+      <div class="category-filter">
+        <div *ngFor="let category of categories" class="category-item"
+          [class.active]="selectedCategory === category._id">
+          <input type="checkbox" [id]="'cat-' + category._id" [checked]="selectedCategory === category._id"
+            (change)="toggleCategory(category._id)" class="category-checkbox" />
+          <label [for]="'cat-' + category._id" class="category-label">
+            {{ category.ten }}
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- LỌC THEO KÍCH THƯỚC -->
+    <div class="filter-section">
+      <h3 class="filter-title">Lọc theo kích thước</h3>
+      <div class="size-filter">
+        <div *ngFor="let sizeItem of availableSizes" class="size-item" [class.active]="selectedSize === sizeItem.size">
+          <button (click)="toggleSize(sizeItem.size)" class="size-btn">
+            {{ sizeItem.size }}
+          </button>
+          <span class="size-count">{{ sizeItem.count }}</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Khu vực hiển thị sản phẩm -->
+  <section class="product-display">
+    <!-- Active Filter Tags -->
+    <div class="filter-tags" *ngIf="isPriceFiltered() || selectedSize">
+      <!-- Clear all price filters -->
+      <button *ngIf="isPriceFiltered()" class="tag-item clear-tag" (click)="clearPriceFilter()">
+        <i class="fa-solid fa-xmark"></i> Xoá lọc
+      </button>
+
+    </div>
+
+    <div class="product-grid">
+      <div *ngFor="let product of pagedProducts" class="product-card" (click)="viewDetail(product)">
+
+        <!-- Hình + hover icons -->
+        <div class="image-box">
+          <img
+            [src]="product.hinh && product.hinh.length > 0 && product.hinh[0].url ? product.hinh[0].url : 'assets/no-image.png'"
+            [alt]="product.ten" class="product-image" />
+          <div class="card-icons">
+            <!-- <button
+              class="icon-btn cart-btn"
+              title="Thêm vào giỏ hàng"
+              (click)="addToCart(product); $event.stopPropagation()">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </button> -->
+
+
+            <button class="icon-btn fav-btn" title="Thêm vào yêu thích"
+              (click)="toggleFavorite(product); $event.stopPropagation()">
+              <i class="fa-solid fa-heart"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Thông tin sản phẩm -->
+        <div class="product-info">
+          <h4 class="product-name">
+            {{ product.ten?.length > 28
+            ? (product.ten | slice:0:28) + '…'
+            : product.ten }}
+          </h4>
+
+          <!-- Giá -->
+          <div class="product-price-box">
+            <span class="price-new">
+              {{ getPriceRange(product) }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination-wrapper" *ngIf="totalPages > 1">
+      <nav class="pagination">
+        <button *ngFor="let item of paginationDisplay" (click)="typeof item === 'number' && goToPage(item)"
+          [class.active]="item === currentPage" [class.ellipsis]="typeof item === 'string'"
+          [disabled]="typeof item === 'string'">
+          {{ item }}
+        </button>
+      </nav>
+
+      <div class="pagination-jump">
+        <label for="jumpInput">Đi tới trang:</label>
+        <input #jumpInput type="number" id="jumpInput" [(ngModel)]="jumpToPageInput"
+          [attr.placeholder]="'1-' + totalPages" (keyup.enter)="jumpToPage()" min="1" [attr.max]="totalPages"
+          class="jump-input" />
+        <button (click)="jumpToPage()" class="jump-btn">
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+</main>

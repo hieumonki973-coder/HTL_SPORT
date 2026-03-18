@@ -1,0 +1,150 @@
+[{
+  "_id": {
+    "$oid": "700000000000000000000001"
+  },
+  "ten": "Hồng",
+  "trangthai": "active",
+  "createdAt": {
+    "$date": "2025-01-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-01T08:00:00.000Z"
+  },
+  "mau": "#FF69B4",
+  "stt": "01"
+},
+{
+  "_id": {
+    "$oid": "700000000000000000000005"
+  },
+  "ten": "Vàng",
+  "trangthai": "active",
+  "createdAt": {
+    "$date": "2025-01-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-01T08:00:00.000Z"
+  },
+  "mau": "#FFFF00",
+  "stt": "02"
+},
+{
+  "_id": {
+    "$oid": "700000000000000000000006"
+  },
+  "ten": "Xám",
+  "trangthai": "active",
+  "createdAt": {
+    "$date": "2025-01-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-01T08:00:00.000Z"
+  },
+  "mau": "#808080",
+  "stt": "3"
+},
+{
+  "_id": {
+    "$oid": "700000000000000000000009"
+  },
+  "ten": "Xanh đen",
+  "trangthai": "active",
+  "createdAt": {
+    "$date": "2025-01-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-01T08:00:00.000Z"
+  },
+  "mau": "#333366",
+  "stt": "4"
+},
+{
+  "_id": {
+    "$oid": "700000000000000000000013"
+  },
+  "ten": "Đỏ",
+  "trangthai": "active",
+  "createdAt": {
+    "$date": "2025-01-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-01T08:00:00.000Z"
+  },
+  "mau": "#ff0a0a",
+  "stt": "5"
+},
+{
+  "_id": {
+    "$oid": "700000000000000000000024"
+  },
+  "ten": "Đen",
+  "trangthai": "active",
+  "createdAt": {
+    "$date": "2025-01-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-01T08:00:00.000Z"
+  },
+  "mau": "#000000",
+  "stt": "6"
+},
+{
+  "_id": {
+    "$oid": "700000000000000000000027"
+  },
+  "ten": "Xanh lá nhạt",
+  "trangthai": "active",
+  "createdAt": {
+    "$date": "2025-01-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-01T08:00:00.000Z"
+  },
+  "mau": "#CCFFFF",
+  "stt": "7"
+},
+{
+  "_id": {
+    "$oid": "700000000000000000000030"
+  },
+  "ten": "Trắng",
+  "trangthai": "active",
+  "createdAt": {
+    "$date": "2025-01-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-01T08:00:00.000Z"
+  },
+  "mau": "#DDDDDD",
+  "stt": "8"
+},
+{
+  "_id": {
+    "$oid": "700000000000000000000042"
+  },
+  "ten": " Xanh biển",
+  "trangthai": "active",
+  "createdAt": {
+    "$date": "2025-01-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-01T08:00:00.000Z"
+  },
+  "mau": "#33CCFF",
+  "stt": "9"
+},
+{
+  "_id": {
+    "$oid": "69abeea706b776fb60e917a9"
+  },
+  "ten": " Xanh ngọc",
+  "trangthai": "active",
+  "createdAt": {
+    "$date": "2025-01-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-01T08:00:00.000Z"
+  },
+  "mau": "#00CC99",
+  "stt": "10"
+}]

@@ -1,0 +1,642 @@
+:host {
+  --kw-accent: #00bfa6;
+  --kw-orange: #ff7a00;
+  --kw-text: #111827;
+  --kw-shadow: 0 18px 40px rgba(0, 0, 0, 0.14);
+  --kw-border: rgba(0, 0, 0, 0.08);
+  --kw-container: 1200px;
+  --kw-h: 86px;
+}
+
+/* ===== HEADER ===== */
+.kw-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 999;
+  height: var(--kw-h);
+  display: flex;
+  align-items: center;
+  background: transparent;
+  transition: background 220ms ease, box-shadow 220ms ease, backdrop-filter 220ms ease;
+}
+
+.kw-header:not(.is-home) {
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+}
+
+.kw-header.is-home.is-scrolled {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+.kw-container {
+  width: min(var(--kw-container), calc(100% - 40px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 220px 1fr 160px;
+  align-items: center;
+  gap: 18px;
+}
+
+.kw-logo img {
+  height: 52px;
+  width: auto;
+  display: block;
+}
+
+/* ===== NAV ===== */
+
+.kw-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+}
+
+.kw-nav>a,
+.kw-drop>a {
+  text-decoration: none;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: 0.92;
+}
+
+.kw-header.is-home.is-scrolled .kw-nav>a,
+.kw-header.is-home.is-scrolled .kw-drop>a {
+  color: #2f6f55;
+  opacity: 1;
+}
+
+.kw-header:not(.is-home) .kw-nav>a,
+.kw-header:not(.is-home) .kw-drop>a {
+  color: var(--kw-text);
+  opacity: 1;
+}
+
+.kw-nav a.active {
+  color: var(--kw-accent);
+
+}
+
+.kw-drop {
+  position: relative;
+}
+
+/* ===================================== */
+/* DROPDOWN THƯỜNG (CLICK → XỔ XUỐNG) */
+/* ===================================== */
+
+.kw-sub {
+
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  margin-top: 10px;
+
+  min-width: 220px;
+  background: #fff;
+
+  box-shadow: var(--kw-shadow);
+  padding: 10px;
+
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+
+  transition: all .25s ease;
+
+  z-index: 2000;
+}
+
+/* khi click */
+
+.kw-sub.show {
+
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+
+}
+
+.kw-sub a {
+
+  display: block;
+  padding: 10px 12px;
+
+  text-decoration: none;
+  color: var(--kw-text);
+  font-weight: 700;
+  font-size: 14px;
+
+}
+
+.kw-sub a:hover {
+
+  background: rgba(0, 0, 0, 0.04);
+
+}
+
+
+/* ===================================== */
+/* MEGA MENU (CLICK → XỔ XUỐNG) */
+/* ===================================== */
+
+.kw-drop.mega {
+  position: relative;
+}
+
+.kw-mega {
+
+  position: absolute;
+
+  top: 100%;
+  left: 0;
+
+  margin-top: 12px;
+
+  width: 250px;
+
+  background: #fff;
+
+  box-shadow: var(--kw-shadow);
+
+  opacity: 0;
+  transform: translateY(-15px);
+
+  pointer-events: none;
+
+  transition: all .25s ease;
+
+  z-index: 2200;
+
+}
+
+/* khi click mở */
+
+.kw-mega.show {
+
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+
+}
+
+/* menu bên trong */
+
+.kw-mega-inner {
+
+  display: grid;
+
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+
+}
+
+.kw-mega-link {
+
+  display: block;
+
+
+  font-size: 11px;
+
+  padding: 12px 10px;
+
+  text-decoration: none;
+
+  color: #111827;
+
+  font-weight: 700;
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+
+}
+
+.kw-mega-link:last-child {
+  border-bottom: 0;
+}
+
+.kw-mega-link:hover {
+
+  background: rgba(0, 0, 0, 0.04);
+
+}
+
+.kw-mega-link.active {
+  color: var(--kw-orange);
+}
+
+
+/* ===================================== */
+/* ACTIONS */
+/* ===================================== */
+
+.kw-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+}
+
+.kw-icon {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: none;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+.kw-header.is-home.is-scrolled .kw-icon,
+.kw-header:not(.is-home) .kw-icon {
+  background: rgba(17, 24, 39, 0.06);
+  color: var(--kw-text);
+}
+
+.badge {
+
+  position: absolute;
+
+  top: -6px;
+  right: -6px;
+
+  min-width: 18px;
+  height: 18px;
+
+  border-radius: 999px;
+
+  background: var(--kw-orange);
+
+  color: #fff;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0 5px;
+
+  border: 2px solid #fff;
+
+}
+
+/* SEARCH */
+
+.kw-search {
+
+  position: absolute;
+
+  right: 0;
+
+  top: calc(var(--kw-h) - 2px);
+
+  width: 260px;
+
+  padding: 10px;
+
+  background: #fff;
+
+  box-shadow: var(--kw-shadow);
+
+  opacity: 0;
+  pointer-events: none;
+
+  transform: translateY(-10px);
+
+  transition: all .2s ease;
+
+}
+
+.kw-search.show {
+
+  opacity: 1;
+  pointer-events: auto;
+
+  transform: translateY(0);
+
+}
+
+.kw-search input {
+
+  width: 100%;
+  height: 40px;
+
+  border-radius: 10px;
+
+  border: 1px solid var(--kw-border);
+
+  outline: none;
+
+  padding: 0 12px;
+
+}
+
+/* Spacer */
+
+.kw-spacer {
+
+  height: var(--kw-h);
+
+}
+
+/* HERO */
+
+.kw-hero {
+
+  height: 720px;
+
+  background-size: cover;
+  background-position: center;
+
+  position: relative;
+
+}
+
+.kw-hero-overlay {
+
+  position: absolute;
+
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.42);
+
+}
+
+.kw-hero-inner {
+
+  position: relative;
+
+  width: min(var(--kw-container), calc(100% - 40px));
+
+  margin: 0 auto;
+
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  padding-top: var(--kw-h);
+
+}
+
+.kw-hero-content {
+
+  max-width: 560px;
+
+  color: #fff;
+
+}
+
+.kw-hero-content h1 {
+
+  margin: 0 0 18px;
+
+  font-size: 68px;
+
+  line-height: .95;
+
+  font-weight: 1000;
+
+}
+
+.kw-hero-content p {
+
+  margin: 0 0 22px;
+
+  font-size: 15px;
+
+  opacity: .92;
+
+}
+
+.kw-hero-btns {
+
+  display: flex;
+
+  gap: 14px;
+
+}
+
+.btn {
+
+  height: 46px;
+
+  padding: 0 18px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-decoration: none;
+
+  font-weight: 900;
+
+}
+
+.btn.primary {
+
+  background: #fff;
+
+  color: #111;
+
+}
+
+.btn.ghost {
+
+  background: transparent;
+
+  color: #fff;
+
+  border: 2px solid rgba(255, 255, 255, .7);
+
+}
+/* ===== ACCOUNT ===== */
+
+.kw-account {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* icon user */
+.nav-user {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.05);
+  color: #111;
+  font-size: 16px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nav-user:hover {
+  background: #00bfa6;
+  color: white;
+}
+
+/* dropdown wrapper */
+.account-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+/* icon */
+.account-dropdown i {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #111;
+}
+
+/* select dropdown */
+.account-dropdown select {
+  position: absolute;
+  top: 48px;
+  right: 0;
+
+  min-width: 180px;
+  padding: 10px;
+
+  border-radius: 8px;
+  border: 1px solid #eee;
+
+  background: white;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+
+  font-size: 14px;
+  cursor: pointer;
+
+  appearance: none;
+}
+
+/* option */
+.account-dropdown option {
+  padding: 8px;
+}
+
+/* hover effect icon */
+.account-dropdown:hover i {
+  background: #00bfa6;
+  color: white;
+}
+.kw-account {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* icon user chưa login */
+.nav-user,
+.account-trigger {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  background: #111; /* màu đen */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-user:hover,
+.account-trigger:hover {
+  background: #000;
+  transform: translateY(-1px);
+}
+
+.account-dropdown {
+  position: relative;
+}
+
+/* menu */
+.account-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 220px;
+  background: #111; /* màu đen */
+  color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: all 0.22s ease;
+  z-index: 9999;
+}
+
+/* chỉ hiện khi click */
+.account-dropdown.show .account-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.account-menu-head {
+  padding: 14px 16px;
+  font-weight: 700;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: #1b1b1b;
+}
+
+.account-menu a,
+.account-menu button {
+  width: 100%;
+  display: block;
+  text-align: left;
+  padding: 13px 16px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+
+.account-menu a:hover,
+.account-menu button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.account-menu button {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: #ffb3b3;
+}

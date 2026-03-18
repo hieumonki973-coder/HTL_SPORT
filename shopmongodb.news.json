@@ -1,0 +1,96 @@
+[{
+  "_id": {
+    "$oid": "6889ac4d5e6bb2dc7823e524"
+  },
+  "title": "Tin tức nổi bật 1",
+  "description": "Nhờ chiến thuật 1 pit, Lando Norris về nhất, đưa đội đua McLaren chạm mốc 200 chiến thắng trong lịch sử F1 dù bị thua thiệt suốt giai đoạn đầu Grand Prix Hungary ngày 3/8.",
+  "image": "https://i1-thethao.vnecdn.net/2025/08/04/download-16-1754273264-5764-1754273880.jpg?w=1020&h=0&q=100&dpr=1&fit=crop&s=iwIi1Ygjthk3jcz4dsqdyw",
+  "createdAt": {
+    "$date": "2025-07-30T10:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-07T09:31:42.038Z"
+  },
+  "viewCount": 1
+},
+{
+  "_id": {
+    "$oid": "689077c824bd2a291f7e1f8a"
+  },
+  "title": "Tin tức nổi bật 1",
+  "description": "Ấn ĐộThần đồng pickleball Quang Dương giành hai chức vô địch và một Á quân ở giải Moonsoon Pickleball Championship 3.0, tối 3/8.",
+  "image": "https://i1-thethao.vnecdn.net/2025/08/03/screenshot-2025-08-03-at-18-52-7661-9849-1754235541.png?w=1020&h=0&q=100&dpr=1&fit=crop&s=RE4igZxiwrTRJhQZ5UUpUw",
+  "createdAt": {
+    "$date": "2025-07-30T10:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "689077cc24bd2a291f7e1f8b"
+  },
+  "title": "Tin tức nổi bật 1",
+  "description": "Chiến thắng tại eSports World Cup 2025 là danh hiệu thế giới thứ 20 trong sự nghiệp của kỳ thủ cờ vua Na Uy Magnus Carlsen.\n\nCác danh hiệu thế giới (có chữ world trong tên giải đấu) mà Carlsen giành được gồm 8 giải cờ chớp thế giới, 5 cờ tiêu chuẩn, 5 cờ nhanh, 1 World Cup cờ vua và 1 World Cup thể thao điện tử.",
+  "image": "https://i1-thethao.vnecdn.net/2025/08/02/carlsen-1754111261-1754111276-1812-1754111504.jpg?w=1020&h=0&q=100&dpr=1&fit=crop&s=d8WpRUNKHmWCJzcM7ILz-w",
+  "createdAt": {
+    "$date": "2025-07-30T10:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "689077e224bd2a291f7e1f8c"
+  },
+  "title": "Tin tức nổi bật 1",
+  "description": "34\nThể thaoNgoại hạng AnhTin tứcChủ nhật, 3/8/2025, 15:55 (GMT+7)\nMan Utd chấp nhận lỗ nặng để bán Hojlund",
+  "image": "https://i1-thethao.vnecdn.net/2025/08/03/hojlund-1754211087-3181-1754211155.jpg?w=1020&h=0&q=100&dpr=1&fit=crop&s=an8_1TF3j8AODvs0bqIoiw",
+  "createdAt": {
+    "$date": "2025-07-30T10:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "689077ef24bd2a291f7e1f8d"
+  },
+  "title": "Amorim: 'Man Utd mạnh mẽ, nhanh hơn mùa trước'",
+  "description": "MỹSau trận giao hữu thắng Bournemouth 4-1, HLV Ruben Amorim cho biết các cầu thủ Man Utd cải thiện rõ rệt về thể chất và sự gắn kết.",
+  "image": "https://i1-thethao.vnecdn.net/2025/07/31/man-utd-PNG-1753979188-8310-1753979283.png?w=1020&h=0&q=100&dpr=1&fit=crop&s=aBASSSYPEKkmpiSpXDiOag",
+  "createdAt": {
+    "$date": "2025-07-30T10:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-07T09:31:52.300Z"
+  },
+  "viewCount": 1
+},
+{
+  "_id": {
+    "$oid": "689077f124bd2a291f7e1f8e"
+  },
+  "title": "Saudi Pro League nhắm Son Heung-min cho thời 'hậu Ronaldo'",
+  "description": "Arab SaudiNhiều CLB Arab Saudi xem Son Heung-min như biểu tượng mới để dần thay thế huyền thoại Cristiano Ronaldo.\n\n\"Với khả năng Ronaldo rời Al Nassr ngày càng cao, Saudi Pro League cần một 'biểu tượng mới', và Son Heung-min, với sức hút thương mại lớn tại thị trường Đông Á, đã trở thành mục tiêu hàng đầu\", tờ The Guardian đưa tin.",
+  "image": "https://i1-thethao.vnecdn.net/2025/06/02/son-PNG-1748825136-5448-1748825292.png?w=1020&h=0&q=100&dpr=1&fit=crop&s=9PZw_XCTDUapdhGJ6H-TLw",
+  "createdAt": {
+    "$date": "2025-07-30T10:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "689077ff24bd2a291f7e1f8f"
+  },
+  "title": "Trọng tài Trần Đình Thịnh - tiếng còi bạc mệnh",
+  "description": "Đồng NaiTrong mắt các đồng nghiệp, cố trọng tài Trần Đình Thịnh, người qua đời sáng nay ở tuổi 43 vì đột quỵ, vốn giàu nghị lực, bản lĩnh và cầu tiến.",
+  "image": "https://i1-thethao.vnecdn.net/2025/08/04/dong9927-jpg-1754272273-175427-4593-6445-1754283447.jpg?w=1020&h=0&q=100&dpr=1&fit=crop&s=XMkIqpghNy6wtFFu-1GeQw",
+  "createdAt": {
+    "$date": "2025-07-30T10:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6890780224bd2a291f7e1f90"
+  },
+  "title": "Đội hạng Nhất thay Quảng Nam dự V-League 2025-2026",
+  "description": "Hưng YênPVF-CAND đồng ý lên chơi V-League 2025-2026 thay Quảng Nam và Đồng Nai (trước là Bình Phước).\n\nĐội bóng Hưng Yên sẽ thay thế mã số thi đấu của Quảng Nam, do đó lịch thi đấu mùa mới không cần điều chỉnh.\n\nDo đây là suất đặc cách, PVF-CAND được cho thêm thời gian sắp xếp lực lượng. Thời hạn đăng ký cầu thủ là trước 17h ngày 8/8.",
+  "image": "https://i1-thethao.vnecdn.net/2025/08/02/509440091-1163255452482839-744-9150-1314-1754123774.jpg?w=1020&h=0&q=100&dpr=1&fit=crop&s=bwWuA_3KUJlO6Hn8qI2k7A",
+  "createdAt": {
+    "$date": "2025-07-30T10:00:00.000Z"
+  }
+}]

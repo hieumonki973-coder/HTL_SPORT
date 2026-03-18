@@ -1,0 +1,26 @@
+<main class="news-wrapper">
+  <section class="news-grid">
+    <div
+      class="news-card"
+      *ngFor="let news of newsList"
+      [routerLink]="['/news-detail', news._id]"
+      routerLinkActive="router-link-active"
+    >
+      <!-- Ảnh bên trái -->
+      <img [src]="news.image" alt="Ảnh tin tức" class="news-image" />
+
+      <!-- Nội dung bên phải -->
+      <div class="news-content">
+        <div class="news-meta">
+          <span>Đã đăng ngày {{ news.createdAt | date:'dd/MM/yyyy' }}</span>
+          <span *ngIf="news.author"> | Bởi {{ news.author }}</span>
+        </div>
+
+        <h3 class="news-title">{{ news.title }}</h3>
+        <p class="news-desc">{{ news.description }}</p>
+
+        <button class="news-btn">Tiếp tục đọc →</button>
+      </div>
+    </div>
+  </section>
+</main>

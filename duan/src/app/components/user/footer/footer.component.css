@@ -1,0 +1,115 @@
+/* Footer styles */
+#footer {
+  background: #222;
+  color: #bbb;
+  font-size: 14px;
+}
+
+.footer-top {
+  padding: 40px 0;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.footer-col h3.footer-title {
+  color: #fff;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+  color: #bbb;
+  text-decoration: none;
+}
+
+.footer-col ul li a:hover {
+  color: #fff;
+}
+
+.footer-contact li {
+  margin-bottom: 8px;
+}
+
+.footer-contact i {
+  margin-right: 8px;
+}
+
+.footer-bottom {
+  background: #111;
+  padding: 15px 0;
+  font-size: 13px;
+}
+
+.footer-bottom-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-payments i {
+  font-size: 24px;
+  margin: 0 5px;
+  color: #bbb;
+}
+
+.footer-payments i:hover {
+  color: #fff;
+}
+
+.newsletter {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.newsletter form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.newsletter .input {
+  padding: 8px;
+  border-radius: 3px;
+  border: none;
+  width: 250px;
+}
+
+.newsletter-btn {
+  background: #e63946;
+  border: none;
+  color: #fff;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.newsletter-follow {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.newsletter-follow a {
+  color: #bbb;
+  font-size: 18px;
+}
+
+.newsletter-follow a:hover {
+  color: #fff;
+}

@@ -1,0 +1,168 @@
+<div class="user-dashboard">
+  <!-- Sidebar -->
+  <aside class="user-sidebar">
+    <div *ngIf="user" class="user-info">
+      <div class="avatar-wrap">
+        <img src="../../../../assets/img/admin.jpg" alt="">
+      </div>
+      <h2 class="name">{{ user.fullName || user.name }}</h2>
+      <p class="email">{{ user.email }}</p>
+    </div>
+
+    <nav class="nav-menu">
+      <button (click)="setActiveTab('orders')" [class.active]="activeTab==='orders'">
+        <i class="fas fa-box"></i><span>Đơn hàng</span>
+      </button>
+      <button (click)="setActiveTab('favorites')" [class.active]="activeTab==='favorites'">
+        <i class="fas fa-heart"></i><span>Yêu thích</span>
+      </button>
+      <button (click)="setActiveTab('profile')" [class.active]="activeTab==='profile'">
+        <i class="fas fa-user"></i><span>Thông tin</span>
+      </button>
+      <button (click)="setActiveTab('password')" [class.active]="activeTab==='password'">
+        <i class="fas fa-lock"></i><span>Đổi mật khẩu</span>
+      </button>
+    </nav>
+  </aside>
+
+  <!-- Main content -->
+  <main class="user-content">
+
+    <!-- Orders -->
+    <section *ngIf="activeTab==='orders'" class="tab orders-tab">
+      <h3>Lịch sử đơn hàng</h3>
+      <ng-container *ngIf="orders?.length; else noOrders">
+        <div class="orders-list">
+          <article class="order-card" *ngFor="let o of orders">
+            <header class="order-header">
+              <div><strong>Mã:</strong> {{ o.orderId || o._id }}</div>
+              <div><strong>Ngày:</strong> {{ o.createdAt | date:'dd/MM/yyyy' }}</div>
+              <div>
+                <strong>Trạng thái:</strong>
+                <span class="status" [ngClass]="{
+    'status--pending': o.status === 'pending',
+    'status--cancelled': o.status === 'cancelled',
+    'status--completed': o.status === 'completed'
+  }">
+                  {{ translateStatus(o.status) }}
+                </span>
+              </div>
+
+              <div><strong>Tổng:</strong> {{ o.amount | currency:'VND' }}</div>
+            </header>
+
+            <main class="order-items" *ngIf="o.cartItems?.length; else noItems">
+              <div class="item" *ngFor="let item of o.cartItems">
+                <img [src]="item.image" alt="Sản phẩm" />
+                <div class="details">
+                  <p class="name">
+                    {{ item.name?.substring(0, 17) + (item.name?.length > 17 ? '…' : '') }}
+                  </p>
+                  <p>Số lượng: {{ item.quantity }}</p>
+                  <p>{{ item.price | currency:'VND' }}</p>
+                </div>
+              </div>
+            </main>
+            <ng-template #noItems>
+              <p class="empty">Không có sản phẩm trong đơn này.</p>
+            </ng-template>
+
+            <footer class="order-actions">
+              <button type="button" class="btn btn-danger" *ngIf="isCancelable(o.status)"
+                (click)="cancelOrder(o.orderId || o._id)">
+                Huỷ đơn
+              </button>
+
+            </footer>
+          </article>
+        </div>
+      </ng-container>
+      <ng-template #noOrders>
+        <div class="empty-state">Bạn chưa có đơn hàng nào.</div>
+      </ng-template>
+    </section>
+
+    <!-- Favorites -->
+    <section *ngIf="activeTab==='favorites'" class="tab favorites-tab">
+      <h3>Sản phẩm yêu thích</h3>
+      <ng-container *ngIf="favorites?.length; else noFavs">
+        <div class="favorites-grid">
+          <div class="fav-item" *ngFor="let p of favorites">
+            <img [src]="p.productId?.image?.[0] || 'https://via.placeholder.com/200x200?text=No+Image'"
+              [alt]="p.productId?.name" />
+            <p class="title">
+              {{ p.productId?.name.substring(0, 18) + (p.productId?.name.length > 18 ? '…' : '') }}
+            </p>
+            <button type="button" (click)="removeFavorite(p._id)" class="btn-remove">Xóa</button>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #noFavs>
+        <div class="empty-state">Chưa có sản phẩm yêu thích nào.</div>
+      </ng-template>
+    </section>
+
+    <!-- Profile -->
+    <section *ngIf="activeTab==='profile'" class="tab profile-tab">
+      <h3>Thông tin cá nhân</h3>
+
+      <!-- Chế độ xem -->
+      <div *ngIf="!isEditing; else editMode" class="profile-view card">
+        <div class="avatar-wrap">
+          <img src="../../../../assets/img/admin.jpg" alt="">
+        </div>
+        <p><strong>Họ và tên:</strong> {{ user.fullName }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>SĐT:</strong> {{ user.phone }}</p>
+        <p><strong>Địa chỉ:</strong> {{ user.address }}</p>
+        <button type="button" (click)="enableEdit()" class="btn-save">Chỉnh sửa</button>
+      </div>
+
+      <!-- Chế độ chỉnh sửa -->
+      <ng-template #editMode>
+        <form *ngIf="editUser" (ngSubmit)="updateProfile()" class="profile-form card">
+          <div class="avatar-wrap edit-avatar">
+            <img [src]="previewAvatar || editUser.avatar || 'https://via.placeholder.com/100'" alt="Avatar" />
+            <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+          </div>
+
+          <label>Họ và tên</label>
+          <input [(ngModel)]="editUser.fullName" name="fullName" required />
+
+          <label>Email</label>
+          <input [(ngModel)]="editUser.email" name="email" type="email" required />
+
+          <label>SĐT</label>
+          <input [(ngModel)]="editUser.phone" name="phone" />
+
+          <label>Địa chỉ</label>
+          <textarea [(ngModel)]="editUser.address" name="address" rows="3"></textarea>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-save">Lưu</button>
+            <button type="button" class="btn-cancel" (click)="cancelEdit()">Huỷ</button>
+          </div>
+        </form>
+      </ng-template>
+    </section>
+
+    <!-- Change Password -->
+    <section *ngIf="activeTab==='password'" class="tab password-tab">
+      <h3>Đổi mật khẩu</h3>
+      <form (ngSubmit)="changePassword()" class="password-form card">
+        <label>Mật khẩu cũ</label>
+        <input type="password" [(ngModel)]="oldPassword" name="oldPassword" placeholder="Nhập mật khẩu cũ" required />
+
+        <label>Mật khẩu mới</label>
+        <input type="password" [(ngModel)]="newPassword" name="newPassword" placeholder="Nhập mật khẩu mới" required />
+
+        <label>Nhập lại mật khẩu mới</label>
+        <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" placeholder="Xác nhận mật khẩu mới"
+          required />
+
+        <button type="submit" class="btn-save">Thay đổi</button>
+      </form>
+    </section>
+
+  </main>
+</div>

@@ -1,0 +1,133 @@
+<!-- ===== PAGE HEADER ===== -->
+<div class="page-header">
+  <div>
+    <h1>Phân Tích Dụng Cụ Thể Thao</h1>
+    <small>Theo dõi các chỉ số chính: tồn kho và đơn hàng.</small>
+  </div>
+
+  <div class="header-actions">
+    <button (click)="logout()">
+      <span class="las fa-right-from-bracket"></span> Đăng xuất
+    </button>
+  </div>
+</div>
+
+<!-- ===== STAT CARDS ===== -->
+<div class="cards">
+  <!-- DOANH THU (TẠM THỜI) -->
+  <div class="card-single card-color-1">
+    <div class="card-flex">
+      <div class="card-info">
+        <div class="card-head">
+          <span>Tổng Doanh Thu</span>
+          <small>Chưa tích hợp thanh toán</small>
+        </div>
+        <h2>{{ totalRevenue | currency:'VND':'symbol':'1.0-0' }}</h2>
+        <small>Đang phát triển</small>
+      </div>
+      <div class="card-chart success">
+        <i class="fa-solid fa-chart-simple"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- TỒN KHO -->
+  <div class="card-single card-color-2">
+    <div class="card-flex">
+      <div class="card-info">
+        <div class="card-head">
+          <span>Tồn Kho</span>
+          <small>Số lượng sản phẩm còn lại</small>
+        </div>
+        <h2>{{ totalInventory }}</h2>
+      </div>
+      <div class="card-chart danger">
+        <i class="fa-solid fa-warehouse"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- ĐƠN HÀNG -->
+  <div class="card-single card-color-3">
+    <div class="card-flex">
+      <div class="card-info">
+        <div class="card-head">
+          <span>Đơn Hàng</span>
+          <small>Tổng số đơn</small>
+        </div>
+        <h2>{{ totalOrders }}</h2>
+      </div>
+      <div class="card-chart yellow">
+        <i class="fa-solid fa-box"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== RECENT ORDERS ===== -->
+<div class="jobs-gird">
+  <div class="jobs">
+    <h2>
+      Đơn Hàng Gần Đây
+      <small>
+        <a routerLink="/admin/orders">
+          Xem tất cả <span class="las la-arrow-right"></span>
+        </a>
+      </small>
+    </h2>
+
+    <div class="table-responsive">
+      <table width="100%">
+        <thead>
+          <tr>
+            <th></th>
+            <th>ID</th>
+            <th>Sản phẩm</th>
+            <th>Khách hàng</th>
+            <th>Ngày</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngIf="!isLoading && recentOrders.length === 0">
+            <td colspan="5">Không có đơn hàng gần đây</td>
+          </tr>
+
+          <tr *ngFor="let order of recentOrders">
+            <td><span class="indicator"></span></td>
+            <td>{{ order._id }}</td>
+            <td>{{ order.cartItems?.[0]?.name || 'N/A' }}</td>
+            <td>{{ order.customerInfo?.fullName || 'N/A' }}</td>
+            <td>{{ order.createdAt | date:'shortDate' }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div *ngIf="isLoading" class="loading">Đang tải dữ liệu...</div>
+      <div *ngIf="errorMessage && !isLoading" class="error">{{ errorMessage }}</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CATEGORY REVENUE CHART ===== -->
+<div class="analytics-diagram">
+  <div class="engage-head">
+    <div class="card-diagram card-body">
+      DOANH THU THEO DANH MỤC (TẠM)
+    </div>
+
+    <div class="analytics-chart">
+      <div *ngIf="isLoading" class="loading">
+        Đang tải biểu đồ...
+      </div>
+
+      <apx-chart
+        *ngIf="!isLoading && !errorMessage"
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [xaxis]="chartOptions.xaxis"
+        [title]="chartOptions.title">
+      </apx-chart>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<section class="favorite-container">
+  <h2>Sản phẩm yêu thích</h2>
+
+  <div *ngIf="favorites.length === 0" class="empty-message">
+    Bạn chưa yêu thích sản phẩm nào.
+  </div>
+
+  <div class="favorite-grid" *ngIf="favorites.length > 0">
+    <div class="favorite-item" *ngFor="let fav of favorites">
+      <img
+        [src]="fav.productId?.image?.[0]"
+        [alt]="fav.productId?.name"
+      />
+      <h3>{{ fav.productId?.name }}</h3>
+      <p>{{ fav.productId?.price | number }}₫</p>
+      <button (click)="removeFavorite(fav._id)">Xoá khỏi yêu thích</button>
+    </div>
+  </div>
+</section>

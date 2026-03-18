@@ -1,0 +1,226 @@
+<main class="product-detail-page" *ngIf="product">
+
+  <!-- ===== BREADCRUMB ===== -->
+  <nav class="breadcrumb">
+    <a routerLink="/">Trang chủ</a> ›
+    <a>Danh mục</a> ›
+    <span>{{ product.ten }}</span>
+  </nav>
+
+  <!-- ===== MAIN ===== -->
+  <section class="product-detail-container">
+
+    <!-- ===== LEFT: GALLERY ===== -->
+    <div class="product-gallery">
+
+      <div class="badge-sale" *ngIf="oldPrice">
+        SALE
+      </div>
+
+      <div class="main-image">
+        <img *ngIf="selectedImage" [src]="selectedImage" alt="{{ product.ten }}" />
+        <span class="zoom-hint">Hover để zoom</span>
+      </div>
+
+      <div class="thumbnail-list">
+        <img *ngFor="let img of filteredImages" [src]="img.url" (click)="selectedImage = img.url"
+          [class.active]="selectedImage === img.url" />
+      </div>
+
+    </div>
+
+    <!-- ===== RIGHT: INFO ===== -->
+    <div class="product-info">
+
+      <h1 class="product-name">{{ product.ten }}</h1>
+
+      <div class="rating">
+        <span *ngFor="let star of getStarArray()">
+          <span *ngIf="star === 1">⭐</span>
+          <span *ngIf="star === 0.5">⭐</span>
+          <span *ngIf="star === 0">☆</span>
+        </span>
+        <span>({{ totalReview }} đánh giá)</span>
+      </div>
+
+
+      <span class="status in-stock" *ngIf="!outOfStock">✔ Còn hàng</span>
+      <span class="status out-stock" *ngIf="outOfStock">✖ Hết hàng</span>
+
+      <!-- ===== PRICE ===== -->
+      <div class="price-box">
+
+        <!-- Giá chính xác -->
+        <span class="current-price" *ngIf="displayPrice !== null">
+          {{ displayPrice | number }}đ
+        </span>
+
+        <!-- Giá gốc -->
+        <span class="old-price" *ngIf="oldPrice">
+          {{ oldPrice | number }}đ
+        </span>
+
+        <!-- Giá khoảng -->
+        <span class="current-price" *ngIf="displayPrice === null && priceRange">
+          {{ priceRange.min | number }}
+          <ng-container *ngIf="priceRange.min !== priceRange.max">
+            - {{ priceRange.max | number }}
+          </ng-container>
+          đ
+        </span>
+
+      </div>
+
+      <!-- ===== COLOR ===== -->
+      <div class="color-options" *ngIf="colors.length">
+        <label>Màu sắc:</label>
+        <div class="color-list">
+          <div *ngFor="let c of colors" class="color-dot" [style.background]="c.code"
+            [class.active]="selectedColor === c.code" (click)="selectColor(c.code)" [title]="c.name"></div>
+        </div>
+      </div>
+
+      <!-- ===== SIZE ===== -->
+      <div class="option-group" *ngIf="sizes.length">
+        <label>Size:</label>
+        <div class="size-options">
+          <button *ngFor="let s of sizes" (click)="selectSize(s)" [class.active]="selectedSize === s">
+            {{ s }}
+          </button>
+        </div>
+      </div>
+
+      <!-- ===== QUANTITY ===== -->
+      <div class="quantity-box">
+
+        <label>Số lượng:</label>
+
+        <div class="quantity-control">
+          <button (click)="decreaseQuantity()" [disabled]="quantity <= 1">−</button>
+
+          <input type="number" [(ngModel)]="quantity" (change)="onQuantityChange()"
+            min="1" [max]="maxQuantity > 0 ? maxQuantity : 1" />
+
+          <button (click)="increaseQuantity()" [disabled]="quantity >= maxQuantity || maxQuantity === 0">
+            +
+          </button>
+        </div>
+
+        <small *ngIf="quantityError" class="stock-warning">
+          {{ quantityError }}
+        </small>
+
+        <small *ngIf="selectedVariant && selectedVariant.soluong <= 5 && selectedVariant.soluong > 0" class="stock-warning">
+          ⚠️ Chỉ còn {{ selectedVariant.soluong }} sản phẩm ⚠️
+        </small>
+
+      </div>
+
+      <!-- ===== ACTION BUTTONS ===== -->
+      <div class="action-buttons">
+
+        <button class="btn-add-cart" (click)="addToCart()"
+          [disabled]="!selectedVariant || outOfStock || quantity > maxQuantity">
+           Thêm vào giỏ hàng
+        </button>
+
+        <button class="btn-buy-now" (click)="muaNgay()"
+          [disabled]="!selectedVariant || outOfStock || quantity > maxQuantity">
+          MUA NGAY
+        </button>
+
+        <button class="btn-wishlist">
+         Yêu thích
+        </button>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== COMBO ===== -->
+  <section class="product-combo">
+    <h2>Mua kèm ưu đãi</h2>
+
+    <div class="combo-list">
+      <div class="combo-item" *ngFor="let combo of comboProducts">
+        <img [src]="combo.image" />
+        <div>
+          <p>{{ combo.name }}</p>
+          <span>{{ combo.price | number }}đ</span>
+        </div>
+        <button>Thêm</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TABS ===== -->
+  <section class="product-tabs">
+
+    <ul class="tab-header">
+      <li [class.active]="activeTab === 'desc'" (click)="setTab('desc')">
+        Mô tả
+      </li>
+
+      <li [class.active]="activeTab === 'review'" (click)="setTab('review')">
+        Đánh giá
+      </li>
+
+      <li [class.active]="activeTab === 'policy'" (click)="setTab('policy')">
+        Chính sách
+      </li>
+
+      <li [class.active]="activeTab === 'size'" (click)="setTab('size')">
+        Size guide
+      </li>
+    </ul>
+
+    <div class="tab-content" *ngIf="activeTab === 'desc'">
+      <p style="white-space: pre-line">{{ product.mota }}</p>
+    </div>
+
+    <div class="tab-content" *ngIf="activeTab === 'review'">
+      <app-review [productId]="product._id"></app-review>
+
+    </div>
+
+    <div class="tab-content" *ngIf="activeTab === 'policy'">
+      <p>Đổi trả trong 14 ngày nếu lỗi từ nhà sản xuất.</p>
+    </div>
+
+    <div class="tab-content" *ngIf="activeTab === 'size'">
+      <p>Hướng dẫn chọn size chi tiết.</p>
+    </div>
+
+  </section>
+
+  <!-- ===== RELATED ===== -->
+  <section class="related-products" *ngIf="relatedProducts.length">
+    <h2>Sản phẩm liên quan</h2>
+
+    <div class="product-slider">
+      <div class="product-card" *ngFor="let p of relatedProducts">
+
+        <!-- IMAGE CLICK -->
+        <a class="product-image" [routerLink]="['/product-detail', p._id]" [title]="p.ten">
+          <img [src]="p.hinh?.[0]?.url || 'assets/no-image.png'" [alt]="p.ten" loading="lazy" />
+        </a>
+
+        <!-- TITLE CLICK -->
+        <h4 class="product-title">
+          <a [routerLink]="['/product-detail', p._id]">
+            {{ p.ten }}
+          </a>
+        </h4>
+
+        <!-- PRICE -->
+        <span class="price">
+          {{ p.minPrice | number }} đ
+        </span>
+
+      </div>
+    </div>
+  </section>
+
+
+</main>

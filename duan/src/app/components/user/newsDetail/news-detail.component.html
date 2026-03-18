@@ -1,0 +1,21 @@
+<div class="news-detail-container">
+  <!-- Bên trái: Chi tiết tin -->
+  <div class="news-main" *ngIf="newsDetail">
+    <h2 class="news-title">{{ newsDetail.title }}</h2>
+    <img class="news-image" [src]="newsDetail.image" alt="{{ newsDetail.title }}">
+    <p class="news-description">{{ newsDetail.description }}</p>
+    <div class="news-content" [innerHTML]="newsDetail.content"></div>
+  </div>
+
+  <!-- Bên phải: Tin tức khác -->
+  <div class="news-sidebar">
+    <h3 class="related-title">Tin tức khác</h3>
+    <div *ngFor="let item of allNews" class="news-card" [routerLink]="['/news', item._id]">
+      <img class="card-image" [src]="item.image" alt="{{ item.title }}">
+      <div class="card-body">
+        <h4 class="card-title">{{ item.title }}</h4>
+        <p class="card-excerpt">{{ item.description | slice:0:80 }}...</p>
+      </div>
+    </div>
+  </div>
+</div>

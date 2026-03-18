@@ -1,0 +1,326 @@
+// ════════════════════════════════════════════
+// Address Picker – theo design system Checkout
+// ════════════════════════════════════════════
+
+$red:        #E3001B;
+$black:      #1A1A1A;
+$white:      #FFFFFF;
+$gray-light: #F4F4F4;
+$gray-mid:   #E0E0E0;
+$gray-text:  #6B6B6B;
+$border:     #D8D8D8;
+$green:      #1a9e4e;
+
+$font-display: 'Barlow Condensed', sans-serif;
+$font-body:    'Barlow', sans-serif;
+
+// ── Wrapper ───────────────────────────────────────────────────────────────────
+.address-picker { position: relative; width: 100%; }
+
+// ── Loading ───────────────────────────────────────────────────────────────────
+.addr-loading {
+  display: flex; align-items: center; gap: 8px;
+  padding: 14px 0; color: $gray-text; font-size: 13px;
+  font-family: $font-body;
+}
+
+// ── Empty state ───────────────────────────────────────────────────────────────
+.addr-empty {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 12px; padding: 28px 20px;
+  border: 1.5px dashed $border;
+  text-align: center;
+
+  .addr-empty-icon svg { width: 44px; height: 44px; stroke: $gray-mid; }
+  .addr-empty-text {
+    color: $gray-text; font-size: 13px;
+    font-family: $font-body; margin: 0;
+  }
+}
+
+.btn-add-first {
+  display: inline-flex; align-items: center; gap: 8px;
+  height: 44px; padding: 0 22px;
+  background: $black; color: $white; border: none; cursor: pointer;
+  font-family: $font-display; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .08em;
+  transition: background .2s;
+  svg { width: 14px; height: 14px; }
+  &:hover { background: #333; }
+}
+
+// ── Selected trigger ──────────────────────────────────────────────────────────
+.addr-selected {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px;
+  border: 1.5px solid $border;
+  background: $white; cursor: pointer;
+  transition: border-color .2s, box-shadow .2s;
+
+  &:hover,
+  &.open {
+    border-color: $black;
+    box-shadow: 0 0 0 3px rgba($black, .05);
+  }
+}
+
+.addr-selected-content { flex: 1; min-width: 0; }
+
+.addr-selected-top {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 4px;
+  .addr-name  { font-family: $font-display; font-weight: 700; font-size: 15px; color: $black; }
+  .addr-phone { font-family: $font-body; color: $gray-text; font-size: 13px; }
+}
+
+.addr-selected-bottom {
+  display: flex; align-items: flex-start; gap: 5px;
+  font-family: $font-body; color: $gray-text; font-size: 13px; line-height: 1.5;
+  .addr-pin { width: 13px; height: 13px; flex-shrink: 0; margin-top: 2px; stroke: $red; }
+}
+
+.addr-placeholder {
+  color: #c0c0c0; font-family: $font-body; font-size: 13px;
+}
+
+.addr-chevron {
+  width: 16px; height: 16px; stroke: $gray-text; flex-shrink: 0;
+  transition: transform .25s;
+  &.rotated { transform: rotate(180deg); }
+}
+
+// ── Dropdown ──────────────────────────────────────────────────────────────────
+.addr-dropdown {
+  position: absolute; top: calc(100% + 2px); left: 0; right: 0;
+  background: $white;
+  border: 1.5px solid $black;
+  box-shadow: 4px 4px 0 rgba($black, .08);
+  z-index: 999;
+  animation: dropIn .18s ease;
+}
+
+@keyframes dropIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.addr-list { max-height: 300px; overflow-y: auto; }
+
+.addr-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 14px;
+  cursor: pointer;
+  border-bottom: 1px solid $border;
+  transition: background .15s;
+
+  &:last-child { border-bottom: none; }
+  &:hover      { background: $gray-light; }
+  &.selected   { background: $gray-light; }
+}
+
+.addr-item-radio {
+  padding-top: 3px; flex-shrink: 0;
+  .radio-dot {
+    width: 16px; height: 16px; border-radius: 50%;
+    border: 2px solid $border;
+    display: flex; align-items: center; justify-content: center;
+    transition: border-color .2s;
+    &.active {
+      border-color: $black;
+      &::after {
+        content: ''; width: 7px; height: 7px;
+        border-radius: 50%; background: $black;
+      }
+    }
+  }
+}
+
+.addr-item-body { flex: 1; min-width: 0; }
+
+.addr-item-top {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 3px;
+  .addr-name  { font-family: $font-display; font-weight: 700; font-size: 14px; color: $black; }
+  .addr-phone { font-family: $font-body; color: $gray-text; font-size: 12px; }
+}
+
+.addr-item-full {
+  font-family: $font-body; color: $gray-text; font-size: 12px; line-height: 1.5;
+}
+
+.addr-badge-default {
+  font-family: $font-display; font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .06em;
+  background: $black; color: $white;
+  padding: 2px 7px;
+}
+
+// ── Item actions ──────────────────────────────────────────────────────────────
+.addr-item-actions { display: flex; gap: 4px; flex-shrink: 0; padding-top: 2px; }
+
+.btn-act {
+  width: 28px; height: 28px;
+  border: 1px solid $border;
+  background: $white; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s, border-color .15s;
+  svg { width: 13px; height: 13px; }
+
+  &.edit   { color: $black;     &:hover { background: $gray-light; border-color: $black; } }
+  &.star   { color: $gray-text; &:hover { background: $gray-light; border-color: $black; } }
+  &.delete { color: $gray-text; &:hover { background: $gray-light; border-color: $red; color: $red; } }
+}
+
+// ── Dropdown footer ───────────────────────────────────────────────────────────
+.addr-dropdown-footer {
+  padding: 10px 14px;
+  border-top: 1px solid $border;
+  background: $gray-light;
+}
+
+.btn-add-new {
+  display: flex; align-items: center; gap: 7px; width: 100%;
+  height: 38px; padding: 0 12px;
+  border: 1.5px dashed $border;
+  background: $white; color: $black;
+  font-family: $font-display; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .06em;
+  cursor: pointer; transition: border-color .15s, background .15s;
+  svg { width: 13px; height: 13px; }
+  &:hover { border-color: $black; background: $gray-light; }
+}
+
+// ── Form wrap ─────────────────────────────────────────────────────────────────
+.addr-form-wrap {
+  border: 1.5px solid $border;
+  animation: fadeIn .2s ease;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.addr-form-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 16px;
+  background: $gray-light;
+  border-bottom: 1px solid $border;
+
+  h3 {
+    margin: 0;
+    font-family: $font-display; font-size: 14px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .08em; color: $black;
+  }
+}
+
+.btn-close-form {
+  width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
+  border: 1px solid $border; background: $white; cursor: pointer; color: $gray-text;
+  transition: border-color .15s, color .15s;
+  svg { width: 14px; height: 14px; }
+  &:hover { border-color: $black; color: $black; }
+}
+
+// ── Form fields ───────────────────────────────────────────────────────────────
+.addr-form { padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+
+.addr-form-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  @media(max-width: 480px) { grid-template-columns: 1fr; }
+}
+
+.addr-form-group {
+  display: flex; flex-direction: column; gap: 5px;
+
+  label {
+    font-family: $font-display; font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .08em; color: $gray-text;
+  }
+
+  .req { color: $red; }
+
+  input, select {
+    width: 100%; height: 44px; padding: 0 12px;
+    border: 1.5px solid $border; border-radius: 0;
+    background: $white; color: $black;
+    font-family: $font-body; font-size: 14px;
+    outline: none; -webkit-appearance: none; appearance: none;
+    transition: border-color .2s, box-shadow .2s;
+
+    &::placeholder { color: #c0c0c0; }
+    &:focus {
+      border-color: $black;
+      box-shadow: 0 0 0 3px rgba($black, .05);
+    }
+    &.is-error {
+      border-color: $red;
+      box-shadow: 0 0 0 3px rgba($red, .07);
+    }
+  }
+
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B6B6B' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 34px;
+    cursor: pointer;
+  }
+}
+
+.error-msg {
+  font-size: 12px; color: $red; font-weight: 500;
+}
+
+// ── Default checkbox ──────────────────────────────────────────────────────────
+.addr-default-check {
+  display: flex; align-items: center; gap: 9px;
+  cursor: pointer; font-family: $font-body; font-size: 13px;
+  color: $gray-text; user-select: none;
+
+  input[type=checkbox] { display: none; }
+
+  .checkmark {
+    width: 16px; height: 16px;
+    border: 1.5px solid $border; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .15s, border-color .15s;
+  }
+
+  input:checked + .checkmark {
+    background: $black; border-color: $black;
+    &::after { content: '✓'; color: $white; font-size: 11px; font-weight: 700; }
+  }
+}
+
+// ── Form actions ──────────────────────────────────────────────────────────────
+.addr-form-actions {
+  display: flex; justify-content: flex-end; gap: 8px; padding-top: 4px;
+
+  .btn-cancel {
+    height: 44px; padding: 0 20px;
+    border: 1.5px solid $border; background: $white; color: $gray-text;
+    font-family: $font-display; font-size: 13px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; cursor: pointer;
+    transition: border-color .15s, color .15s;
+    &:hover { border-color: $black; color: $black; }
+  }
+
+  .btn-save {
+    height: 44px; padding: 0 24px;
+    background: $black; color: $white; border: none; cursor: pointer;
+    font-family: $font-display; font-size: 13px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .08em;
+    transition: background .2s, opacity .2s;
+    display: flex; align-items: center; justify-content: center; gap: 7px;
+    &:hover:not(:disabled) { background: #333; }
+    &:disabled { opacity: .6; cursor: not-allowed; }
+  }
+}
+
+// ── Spinner ───────────────────────────────────────────────────────────────────
+.btn-loading { display: flex; align-items: center; gap: 7px; }
+
+.spinner-sm {
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 2px solid rgba($white, .35);
+  border-top-color: $white;
+  animation: spin .7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }

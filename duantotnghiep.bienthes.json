@@ -1,0 +1,686 @@
+[{
+  "_id": {
+    "$oid": "69809863275896cc67587af2"
+  },
+  "id_sanpham": {
+    "$oid": "68c29b5feb32ca8f85d340c5"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000001"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 1499999,
+  "giaban": 1600000,
+  "stt": "01"
+},
+{
+  "_id": {
+    "$oid": "69809863275896cc67587af6"
+  },
+  "id_sanpham": {
+    "$oid": "68c2a15feb32ca8f85d340c8"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000001"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000006"
+  },
+  "luotban": 20,
+  "giagoc": 2499999,
+  "stt": "02"
+},
+{
+  "_id": {
+    "$oid": "6980a1cd275896cc67587b18"
+  },
+  "id_sanpham": {
+    "$oid": "68c8f061e6f7e8c51e24f146"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000009"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 249000,
+  "stt": "03"
+},
+{
+  "_id": {
+    "$oid": "6980a41f275896cc67587b2a"
+  },
+  "id_sanpham": {
+    "$oid": "68c8f23ee6f7e8c51e24f149"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000009"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 299999,
+  "stt": "04"
+},
+{
+  "_id": {
+    "$oid": "6980a688275896cc67587b32"
+  },
+  "id_sanpham": {
+    "$oid": "68c8f310e6f7e8c51e24f14a"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000030"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 359999,
+  "stt": "05"
+},
+{
+  "_id": {
+    "$oid": "6980a74d275896cc67587b38"
+  },
+  "id_sanpham": {
+    "$oid": "68c8f3e9e6f7e8c51e24f14b"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000042"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 300000,
+  "stt": "06"
+},
+{
+  "_id": {
+    "$oid": "6980a764275896cc67587b39"
+  },
+  "id_sanpham": {
+    "$oid": "68c8f3e9e6f7e8c51e24f14b"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000030"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 320000,
+  "stt": "06"
+},
+{
+  "_id": {
+    "$oid": "6980a779275896cc67587b3a"
+  },
+  "id_sanpham": {
+    "$oid": "68c8f3e9e6f7e8c51e24f14b"
+  },
+  "id_loaibienthe": {
+    "$oid": "69abeea706b776fb60e917a9"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 310000,
+  "stt": "06"
+},
+{
+  "_id": {
+    "$oid": "6980a836275896cc67587b3e"
+  },
+  "id_sanpham": {
+    "$oid": "68c8f548e6f7e8c51e24f14c"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000021"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 159999,
+  "stt": "07"
+},
+{
+  "_id": {
+    "$oid": "6980a842275896cc67587b3f"
+  },
+  "id_sanpham": {
+    "$oid": "68c8f548e6f7e8c51e24f14c"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000022"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 149999,
+  "stt": "07"
+},
+{
+  "_id": {
+    "$oid": "6980a84c275896cc67587b40"
+  },
+  "id_sanpham": {
+    "$oid": "68c8f548e6f7e8c51e24f14c"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000023"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 139999,
+  "stt": "07"
+},
+{
+  "_id": {
+    "$oid": "6980a8d2275896cc67587b44"
+  },
+  "id_sanpham": {
+    "$oid": "68c8f5e9e6f7e8c51e24f14d"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000030"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 3999999,
+  "stt": "08"
+},
+{
+  "_id": {
+    "$oid": "6980a9bf275896cc67587b4c"
+  },
+  "id_sanpham": {
+    "$oid": "68c8f813e6f7e8c51e24f151"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000027"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 3500000,
+  "giaban": 3000000,
+  "stt": "09"
+},
+{
+  "_id": {
+    "$oid": "6980aa49275896cc67587b52"
+  },
+  "id_sanpham": {
+    "$oid": "68c8f8dde6f7e8c51e24f152"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000030"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 200000,
+  "stt": "10"
+},
+{
+  "_id": {
+    "$oid": "6980aac1275896cc67587b58"
+  },
+  "id_sanpham": {
+    "$oid": "68c8f970e6f7e8c51e24f153"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000033"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 237999,
+  "stt": "11"
+},
+{
+  "_id": {
+    "$oid": "6980aad0275896cc67587b59"
+  },
+  "id_sanpham": {
+    "$oid": "68c8f970e6f7e8c51e24f153"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000034"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 217999,
+  "stt": "11"
+},
+{
+  "_id": {
+    "$oid": "6980aae8275896cc67587b5a"
+  },
+  "id_sanpham": {
+    "$oid": "68c8f970e6f7e8c51e24f153"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000035"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 207999,
+  "stt": "11"
+},
+{
+  "_id": {
+    "$oid": "6980ab4f275896cc67587b5e"
+  },
+  "id_sanpham": {
+    "$oid": "68c8f9fce6f7e8c51e24f154"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000001"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 247999,
+  "stt": "12"
+},
+{
+  "_id": {
+    "$oid": "6980abc9275896cc67587b64"
+  },
+  "id_sanpham": {
+    "$oid": "68c8fa76e6f7e8c51e24f155"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000024"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 159999,
+  "stt": "13"
+},
+{
+  "_id": {
+    "$oid": "6980ac43275896cc67587b6b"
+  },
+  "id_sanpham": {
+    "$oid": "68c8fae5e6f7e8c51e24f156"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000013"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 299999,
+  "giaban": 315999,
+  "stt": "14"
+},
+{
+  "_id": {
+    "$oid": "6980acfa275896cc67587b72"
+  },
+  "id_sanpham": {
+    "$oid": "68c8fb4ae6f7e8c51e24f157"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000030"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 329999,
+  "giaban": 345000,
+  "stt": "15"
+},
+{
+  "_id": {
+    "$oid": "6980ad51275896cc67587b78"
+  },
+  "id_sanpham": {
+    "$oid": "68c8fb89e6f7e8c51e24f158"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000024"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 3389999,
+  "giaban": 3499999,
+  "stt": "16"
+},
+{
+  "_id": {
+    "$oid": "6980adcb275896cc67587b7e"
+  },
+  "id_sanpham": {
+    "$oid": "68c8fc4ae6f7e8c51e24f159"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000001"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 3689999,
+  "stt": "17"
+},
+{
+  "_id": {
+    "$oid": "6980ae4a275896cc67587b84"
+  },
+  "id_sanpham": {
+    "$oid": "68d3986fd74d38db80805630"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000054"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 123000,
+  "giaban": 130000,
+  "stt": "18"
+},
+{
+  "_id": {
+    "$oid": "6980ae8d275896cc67587b86"
+  },
+  "id_sanpham": {
+    "$oid": "68d398d6d74d38db80805631"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000055"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 153000,
+  "stt": "19"
+},
+{
+  "_id": {
+    "$oid": "6980aeb6275896cc67587b88"
+  },
+  "id_sanpham": {
+    "$oid": "68d39d6cd74d38db80805635"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000056"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 53000,
+  "stt": "20"
+},
+{
+  "_id": {
+    "$oid": "6980af4e275896cc67587b8c"
+  },
+  "id_sanpham": {
+    "$oid": "68d39e6ed74d38db80805636"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000058"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 49000,
+  "giaban": 60000,
+  "stt": "22"
+},
+{
+  "_id": {
+    "$oid": "6980af9b275896cc67587b8e"
+  },
+  "id_sanpham": {
+    "$oid": "68d39c8ed74d38db80805633"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000059"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 42000,
+  "stt": "23"
+},
+{
+  "_id": {
+    "$oid": "6980afce275896cc67587b90"
+  },
+  "id_sanpham": {
+    "$oid": "68d39983d74d38db80805632"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000060"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 232000,
+  "stt": "24"
+},
+{
+  "_id": {
+    "$oid": "6980b00d275896cc67587b92"
+  },
+  "id_sanpham": {
+    "$oid": "68d3f7d2ade5deb10140b3c7"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000061"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 232000,
+  "giaban": 260000,
+  "stt": "25"
+},
+{
+  "_id": {
+    "$oid": "69831381c90f1a9effbf499e"
+  },
+  "id_sanpham": {
+    "$oid": "68c8f8dde6f7e8c51e24f152"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000003"
+  },
+  "luotban": 20,
+  "giagoc": 200000,
+  "stt": "10"
+},
+{
+  "_id": {
+    "$oid": "69831a8bc90f1a9effbf499f"
+  },
+  "id_sanpham": {
+    "$oid": "68c8f8dde6f7e8c51e24f152"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000002"
+  },
+  "luotban": 20,
+  "giagoc": 200000,
+  "stt": "10"
+},
+{
+  "_id": {
+    "$oid": "6983f624f1ad5472d1cfce5c"
+  },
+  "id_sanpham": {
+    "$oid": "68d39c8ed74d38db80805633"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000057"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 43000,
+  "stt": "21"
+},
+{
+  "_id": {
+    "$oid": "6984933f0f253733dbdb824c"
+  },
+  "id_sanpham": {
+    "$oid": "68c2a15feb32ca8f85d340c8"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000006"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000006"
+  },
+  "luotban": 20,
+  "giagoc": 2570000,
+  "stt": "02"
+},
+{
+  "_id": {
+    "$oid": "69abe0ff06b776fb60e9178e"
+  },
+  "id_sanpham": {
+    "$oid": "69abdf0806b776fb60e9176c"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000027"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 400000,
+  "stt": "26"
+},
+{
+  "_id": {
+    "$oid": "69abe46506b776fb60e9179a"
+  },
+  "id_sanpham": {
+    "$oid": "69abe45006b776fb60e91799"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000013"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 400000,
+  "stt": "27"
+},
+{
+  "_id": {
+    "$oid": "69abeac806b776fb60e917a5"
+  },
+  "id_sanpham": {
+    "$oid": "68c8f9fce6f7e8c51e24f154"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000005"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000001"
+  },
+  "luotban": 20,
+  "giagoc": 247999,
+  "stt": "12"
+},
+{
+  "_id": {
+    "$oid": "69abebbf06b776fb60e917a6"
+  },
+  "id_sanpham": {
+    "$oid": "68c8f9fce6f7e8c51e24f154"
+  },
+  "id_loaibienthe": {
+    "$oid": "700000000000000000000027"
+  },
+  "soluong": 20,
+  "id_size": {
+    "$oid": "700000000000000000000002"
+  },
+  "luotban": 20,
+  "giagoc": 247999,
+  "stt": "12"
+}]

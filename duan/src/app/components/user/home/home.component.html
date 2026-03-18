@@ -1,0 +1,245 @@
+<!-- 🔔 Thông báo -->
+<div class="home-container">
+  <div *ngIf="authMessage" class="auth-toast">{{ authMessage }}</div>
+  <div *ngIf="successMessage" class="toast-message">{{ successMessage }}</div>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <div class="container-plant" *ngIf="featuredProduct">
+    <div class="section-head">
+      <h1>SẢN PHẨM MỚI</h1>
+    </div>
+
+    <div class="content-wrapper">
+      <!-- LEFT -->
+      <div class="gallery-section">
+        <div class="main-image-container">
+
+          <a [routerLink]="['/product-detail', featuredProduct._id]" class="featured-link">
+            <img class="main-image" [src]="featuredImages?.[currentPlantIndex] || 'assets/img/no-image.png'"
+              [alt]="featuredProduct.ten" />
+          </a>
+        </div>
+
+        <!-- THUMB -->
+        <div class="thumbnail-grid" *ngIf="featuredProducts?.length">
+          <button class="thumbnail" type="button" *ngFor="let p of featuredProducts" (click)="selectFeaturedProduct(p)"
+            [class.active]="p._id === featuredProduct._id">
+            <img [src]="p.hinh?.[0]?.url || 'assets/img/no-image.png'" [alt]="p.ten" />
+          </button>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="text-section">
+        <div class="text-content">
+          <h2 class="product-title">
+            {{ featuredProduct.ten }}
+          </h2>
+          <div class="product-meta">
+            <div class="product-rating">
+              <i class="fa-solid fa-star active"></i>
+              <i class="fa-solid fa-star active"></i>
+              <i class="fa-solid fa-star active"></i>
+              <i class="fa-solid fa-star active"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+
+            <span class="rating-text">4.0</span>
+            <span class="divider">•</span>
+            <span class="review-text">12 đánh giá</span>
+          </div>
+
+          <div class="product-price">
+            {{ getMinPrice(featuredProduct.bienthe) | number }}đ
+          </div>
+
+          <!-- <p class="product-desc">
+          Hãy chào đón sản phẩm mới của chúng tôi – lựa chọn hoàn hảo dành cho những ai yêu thích
+          phong cách thể thao hiện đại, thoải mái và nổi bật trong mọi hoạt động.
+        </p> -->
+
+          <div class="product-highlights">
+            <div class="highlight-item">
+              <i class="fa-solid fa-check"></i>
+              <span>Thiết kế hiện đại, dễ phối</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fa-solid fa-check"></i>
+              <span>Phù hợp tập luyện và mặc hằng ngày</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fa-solid fa-check"></i>
+              <span>Mức giá ưu đãi trong tháng</span>
+            </div>
+          </div>
+
+          <div class="button-group">
+            <a class="btn-wraper" [routerLink]="['/product']">
+              → Khám phá ngay
+            </a>
+
+            <a class="btn-wraper primary" [routerLink]="['/product-detail', featuredProduct._id]">
+              Mua ngay với ưu đãi
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabs products theo danh mục -->
+  <section class="category-section">
+    <!-- HEADER -->
+    <div class="category-header">
+      <h1>DANH MỤC SẢN PHẨM</h1>
+      <p>
+        Giá luôn rẻ, mẫu mới được cập nhật liên tục. Chọn ngay cho mình sản phẩm yêu thích và tập trung rèn luyện sức
+        khỏe
+        mỗi ngày nào.
+      </p>
+    </div>
+
+    <!-- LAYOUT: LEFT GRID + RIGHT BANNER -->
+    <div class="category-layout">
+      <!-- LEFT: CATEGORY GRID -->
+      <div class="category-grid">
+        <button class="category-card" *ngFor="let item of visibleCategories" (click)="goToCategory(item.category._id)"
+          type="button">
+          <div class="category-thumb">
+            <img [src]="item.products?.length ? getProductImage(item.products[0]) : 'assets/images/placeholder.png'"
+              [alt]="item.category.ten" />
+          </div>
+
+          <div class="category-name">
+            {{ item.category.ten }}
+          </div>
+        </button>
+        <div class="view-more" *ngIf="shouldShowToggleCategories">
+          <button type="button" (click)="toggleCategories()">
+            {{ showAllCategories ? 'Thu gọn' : 'Xem thêm' }}
+          </button>
+        </div>
+      </div>
+
+
+      <!-- RIGHT: BANNER (bạn đổi src theo banner của bạn) -->
+      <a class="category-banner" [routerLink]="['/collection']">
+        <img src="assets/img/concep.webp" alt="Banner danh mục" />
+        <div class="banner-content">
+          <div class="banner-title" style="color: #ffe600b9;">PHONG CÁCH CỦA BẠN <br /> <BR>Áo polo thể thao 2026</div>
+          <span class="banner-btn">XEM NGAY →</span>
+        </div>
+      </a>
+    </div>
+
+
+  </section>
+
+  <section class="home-sport-section" *ngFor="let section of audienceSections">
+    <div class="section-left">
+      <h2>{{ section.title }}</h2>
+      <p>{{ section.description }}</p>
+
+      <button class="shop-btn" (click)="goToAudienceSection(section)">
+        {{ section.buttonText }}
+        <span>→</span>
+      </button>
+    </div>
+
+    <div class="section-right">
+      <div class="product-card1" *ngFor="let p of section.products" (click)="viewProductDetail(p)">
+
+        <div class="quick-cart">
+          <button (click)="addToCartFromHome(p, $event)">
+            <i class="fa-solid fa-heart"></i>
+          </button>
+        </div>
+
+        <div class="thumb">
+          <img [src]="getProductImage(p)" [alt]="p.ten" />
+        </div>
+
+        <div class="product-info">
+          <h3 class="product-title">{{ p.ten }}</h3>
+
+          <div class="price-wrap">
+            <span class="old-price" *ngIf="getOldPrice(p.bienthe) > getMinPrice(p.bienthe)">
+              {{ getOldPrice(p.bienthe) | number }}đ
+            </span>
+            <span class="new-price">
+              {{ getMinPrice(p.bienthe) | number }}đ
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <div class="services">
+    <div class="service-box">
+      <i class="fa-solid fa-truck-fast"></i>
+      <h3>Miễn phí vận chuyển</h3>
+      <p>Tất cả đơn hàng trên 200.000VNĐ</p>
+    </div>
+    <div class="service-box">
+      <i class="fa-solid fa-headphones"></i>
+      <h3>Hỗ trợ khách hàng</h3>
+      <p>Hỗ trợ 24/7</p>
+    </div>
+    <div class="service-box">
+      <i class="fa-solid fa-bag-shopping"></i>
+      <h3>Ưu đãi đặc biệt</h3>
+      <p>Đơn hàng từ 150.000VNĐ</p>
+    </div>
+  </div>
+
+  <!-- NEWS -->
+  <section class="news-sections">
+    <div class="news-header">
+      <h1>THÔNG TIN HỮU ÍCH</h1>
+      <p>Những thông tin mới nhất, hãy cùng theo dõi và khám phá</p>
+    </div>
+
+    <div class="news-wrapper">
+      <button class="news-scroll-btn news-prev" (click)="prevNews()">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+
+      <div class="news-container">
+        <article class="news-card" *ngFor="let news of visibleNews">
+          <a [routerLink]="['/news-detail', news._id]" class="news-image">
+            <img [src]="news.image || 'assets/img/no-image.png'" [alt]="news.title" />
+          </a>
+
+          <div class="news-content">
+            <span class="news-tag">TIN TỨC</span>
+
+            <a [routerLink]="['/news-detail', news._id]" class="news-title">
+              {{ news.title }}
+            </a>
+
+            <p class="news-description">
+              {{ news.description || news.content | slice:0:120 }}{{ (news.description || news.content)?.length > 120 ?
+              '...' : '' }}
+            </p>
+
+            <div class="news-footer">
+              <span class="news-date">
+                {{ getNewsDate(news) | date:'dd \'tháng\' M yyyy' }}
+              </span>
+
+              <a [routerLink]="['/news-detail', news._id]" class="news-more">
+                Xem thêm →
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <button class="news-scroll-btn news-next" (click)="nextNews()">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,285 @@
+<p>Categories count: {{ categories.length }}</p>
+<div class="page-header">
+  <div>
+    <h1>Quản lý sản phẩm</h1>
+    <small>Theo dõi các số liệu chính. Kiểm tra báo cáo và thông tin chi tiết.</small>
+  </div>
+
+  <div class="header-actions">
+    <button (click)="exportProducts()">
+      <i class="fas fa-file-export"></i> Xuất dữ liệu
+    </button>
+
+    <button (click)="logout()">
+      <i class="fas fa-right-from-bracket"></i> Đăng xuất
+    </button>
+  </div>
+</div>
+
+
+<!-- ================== STATS ================== -->
+
+<div class="user-cards">
+
+  <div class="card-single card-color-1">
+    <div class="card-flex">
+      <div class="card-info">
+        <span>Tổng sản phẩm</span>
+        <h2>{{ productStats.totalProducts }}</h2>
+      </div>
+      <i class="fa-solid fa-box"></i>
+    </div>
+  </div>
+
+  <div class="card-single card-color-2">
+    <div class="card-flex">
+      <div class="card-info">
+        <span>Còn hàng</span>
+        <h2>{{ productStats.inStockProducts }}</h2>
+      </div>
+      <i class="fa-solid fa-boxes-stacked"></i>
+    </div>
+  </div>
+
+  <div class="card-single card-color-3">
+    <div class="card-flex">
+      <div class="card-info">
+        <span>Sắp hết</span>
+        <h2>{{ productStats.lowStockProducts }}</h2>
+      </div>
+      <i class="fa-solid fa-triangle-exclamation"></i>
+    </div>
+  </div>
+
+  <div class="card-single card-color-4">
+    <div class="card-flex">
+      <div class="card-info">
+        <span>Hết hàng</span>
+        <h2>{{ productStats.outOfStockProducts }}</h2>
+      </div>
+      <i class="fa-solid fa-square-xmark"></i>
+    </div>
+  </div>
+
+</div>
+
+
+
+<!-- ================== TABLE ================== -->
+
+<div class="tab-content">
+  <div class="section-header">
+    <button class="add-new-btn" (click)="openAddModal()">
+      <i class="fas fa-plus"></i> Thêm sản phẩm
+    </button>
+    <button class="delete-selected-btn" [disabled]="!hasSelectedProducts" (click)="deleteSelectedProducts()">
+      <i class="fas fa-trash"></i> Xóa đã chọn
+    </button>
+    <button class="export-btn" (click)="exportProducts()">
+      <i class="fas fa-download"></i> Xuất CSV
+    </button>
+  </div>
+  <div class="data-table">
+    <table>
+      <thead>
+        <tr>
+          <th>
+            <input type="checkbox" [(ngModel)]="selectAll" (change)="toggleSelectAll()">
+          </th>
+          <th>ID</th>
+          <th>Ảnh</th>
+          <th>Tên</th>
+          <th>Danh mục</th>
+          <th>Giá</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of filteredProducts; trackBy: trackByProductId">
+          <td>
+            <input type="checkbox" [(ngModel)]="product.selected" (change)="updateSelectedProducts()">
+          </td>
+          <td>{{ product._id }}</td>
+          <td>
+            <img *ngIf="product.hinh?.length" [src]="product.hinh[0]?.url || product.hinh[0]" [alt]="product.ten"
+              class="product-image">
+          </td>
+          <td>{{ product.ten }}</td>
+          <td>{{ getCategoryName(product) }}</td>
+          <td>{{ getProductPriceRange(product) }}</td>
+          <td class="actions">
+            <button class="edit-btn" (click)="openEditModal(product)">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button class="delete-btn" (click)="deleteProduct(product)">
+              <i class="fas fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- ================= PAGINATION ================= -->
+
+  <div class="pagination">
+    <button [disabled]="currentPage === 1" (click)="changePage(currentPage - 1)">
+      ‹
+    </button>
+    <button *ngFor="let i of pageNumbers" [class.active]="i === currentPage" (click)="changePage(i)">
+      {{ i }}
+    </button>
+    <button [disabled]="currentPage === totalPages" (click)="changePage(currentPage + 1)">
+      ›
+    </button>
+  </div>
+</div>
+
+<!-- ================= ADD MODAL ================= -->
+<div class="modal-overlay" [class.active]="isAddModalOpen">
+  <div class="modal-content add-product-modal">
+    <div class="modal-header">
+      <h3>Thêm sản phẩm</h3>
+      <button class="close-btn" (click)="closeAddModal()">×</button>
+    </div>
+
+
+
+    <div class="modal-body">
+
+      <div class="form-group">
+        <label>Tên sản phẩm</label>
+        <input [(ngModel)]="newProduct.ten">
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Danh mục</label>
+
+        <select class="category-select" multiple size="5" [(ngModel)]="newProduct.categoryIds">
+          <option *ngFor="let c of categories; trackBy: trackByCategory" [ngValue]="c._id">
+            {{ c.ten }}
+          </option>
+        </select>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Mô tả</label>
+
+        <textarea [(ngModel)]="newProduct.desc"></textarea>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Hình ảnh</label>
+
+        <input type="file" class="file-input" (change)="onImageFileSelected($event,false)">
+
+      </div>
+
+
+
+      <!-- VARIANT -->
+
+      <div class="form-group">
+
+        <div class="variant-header">
+
+          <label>Biến thể</label>
+          <button type="button" class="add-variant-btn" (click)="addVariantToNewProduct()">
+            + Thêm biến thể
+          </button>
+
+        </div>
+        <div class="variants-list">
+          <div class="variant-item" *ngFor="let v of newProduct.bienthe; let i=index">
+            <input [(ngModel)]="v.size" placeholder="Size">
+            <input [(ngModel)]="v.color" placeholder="Màu">
+            <input [(ngModel)]="v.giagoc" type="number" placeholder="Giá">
+            <input [(ngModel)]="v.soluong" type="number" placeholder="Kho">
+            <button class="remove-variant-btn" (click)="removeVariantFromNewProduct(i)">
+              ×
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+
+      <button class="action-btn cancel-btn" (click)="closeAddModal()">
+        Hủy
+      </button>
+      <button class="action-btn add-btn" (click)="addProduct()">
+        Lưu
+      </button>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- ================= EDIT MODAL ================= -->
+
+<div class="modal-overlay" [class.active]="isEditModalOpen">
+  <div class="modal-content edit-product-modal" *ngIf="editProduct">
+    <div class="modal-header">
+      <h3>Sửa sản phẩm</h3>
+      <button class="close-btn" (click)="closeEditModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Tên sản phẩm</label>
+        <input [(ngModel)]="editProduct.ten">
+      </div>
+
+      <div class="form-group">
+        <label>Danh mục</label>
+        <select class="category-select" multiple size="5" [(ngModel)]="editProduct.categoryIds">
+          <option *ngFor="let c of categories; trackBy: trackByCategory" [ngValue]="c._id">
+            {{ c.ten }}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Mô tả</label>
+        <textarea [(ngModel)]="editProduct.desc"></textarea>
+      </div>
+      <div class="form-group">
+        <div class="variant-header">
+          <label>Biến thể</label>
+
+          <button class="add-variant-btn" (click)="addVariantToEditProduct()">
+            + Thêm biến thể
+          </button>
+        </div>
+        <div class="variants-list">
+          <div class="variant-item" *ngFor="let v of editProduct.bienthe; let i=index">
+            <input [(ngModel)]="v.size">
+            <input [(ngModel)]="v.color">
+            <input [(ngModel)]="v.giagoc" type="number">
+            <input [(ngModel)]="v.soluong" type="number">
+            <button class="remove-variant-btn" (click)="removeVariantFromEditProduct(i)">
+              ×
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="action-btn cancel-btn" (click)="closeEditModal()">
+        Hủy
+      </button>
+      <button class="action-btn add-btn" (click)="updateProduct()">
+        Cập nhật
+      </button>
+    </div>
+  </div>
+</div>

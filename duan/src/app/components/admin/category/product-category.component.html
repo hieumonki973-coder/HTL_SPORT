@@ -1,0 +1,158 @@
+
+      <div class="page-header">
+        <div>
+          <h1>Quản lý danh mục</h1>
+          <small>Theo dõi các số liệu chính. Kiểm tra báo cáo và thông tin chi tiết.</small>
+        </div>
+        <div class="header-actions">
+          <button (click)="exportData()">
+            <span class="las la-file-export"></span> Xuất Dữ Liệu
+          </button>
+          <button (click)="logout()">
+            <span class="las fa-right-from-bracket"></span> Đăng Xuất
+          </button>
+        </div>
+      </div>
+
+      <div class="cards">
+        <div class="card-single card-color-1">
+          <div class="card-flex">
+            <div class="card-info">
+              <div class="card-head">
+                <span>Tổng loại sản phẩm</span>
+                <small>Số lượng loại sản phẩm hiện có</small>
+              </div>
+              <h2>{{ totalCategories }}</h2>
+              <small>Tổng số danh mục</small>
+            </div>
+            <div class="card-chart success">
+              <i class="fa-solid fa-boxes-stacked"></i>
+            </div>
+          </div>
+        </div>
+        <div class="card-single card-color-2">
+          <div class="card-flex">
+            <div class="card-info">
+              <div class="card-head">
+                <span>Đang hoạt động</span>
+                <small>Số loại sản phẩm đang kinh doanh</small>
+              </div>
+              <h2>{{ activeCategories }}</h2>
+              <small>Danh mục hoạt động</small>
+            </div>
+            <div class="card-chart danger">
+              <i class="fa-solid fa-gears"></i>
+            </div>
+          </div>
+        </div>
+        <div class="card-single card-color-3">
+          <div class="card-flex">
+            <div class="card-info">
+              <div class="card-head">
+                <span>Tạm dừng</span>
+                <small>Số loại sản phẩm ngừng kinh doanh</small>
+              </div>
+              <h2>{{ inactiveCategories }}</h2>
+              <small>Danh mục tạm dừng</small>
+            </div>
+            <div class="card-chart yellow">
+              <i class="fa-solid fa-hourglass-end"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="category-section">
+        <div class="section-header">
+          <h2 class="section-title">Thêm loại sản phẩm mới</h2>
+          <button class="add-category-btn" (click)="openAddModal()">
+            <span class="las la-plus"></span> Thêm mới
+          </button>
+        </div>
+
+        <div class="filter-section">
+          <div class="search-filter">
+            <input type="text" placeholder="Tìm kiếm danh mục..." [(ngModel)]="searchTerm" (input)="applyFilters()">
+            <button><i class="fas fa-search"></i></button>
+          </div>
+          <div class="status-filter">
+            <select [(ngModel)]="statusFilter" (change)="applyFilters()">
+              <option value="">Tất cả trạng thái</option>
+              <option value="active">Hoạt động</option>
+              <option value="inactive">Không hoạt động</option>
+            </select>
+          </div>
+          <button class="reset-btn" (click)="resetFilters()">Xóa bộ lọc</button>
+        </div>
+
+        <div class="details">
+          <div class="recentOrders">
+            <div class="cardHeader">
+              <h2>Danh Sách Loại Sản Phẩm</h2>
+              <a href="#" class="btn" (click)="viewAllCategories($event)">Xem Tất Cả</a>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Mã Loại</th>
+                  <th>Tên Loại</th>
+                  <th>Trạng Thái</th>
+                  <th>Thao Tác</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngIf="errorMessage">
+                  <td colspan="4" class="error">{{ errorMessage }}</td>
+                </tr>
+                <tr *ngIf="!errorMessage && filteredCategories.length === 0">
+                  <td colspan="4">Không có danh mục nào để hiển thị.</td>
+                </tr>
+                <tr *ngFor="let category of filteredCategories; trackBy: trackByCategoryId">
+                  <td>{{ category.code }}</td>
+                  <td>{{ category.name }}</td>
+                  <td><span class="status {{ category.status }}">{{ translateStatus(category.status) }}</span></td>
+                  <td class="actions-category">
+                    <button class="edit-btn" (click)="editCategory(category)" title="Chỉnh sửa">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="delete-btn" (click)="deleteCategory(category._id)" title="Xóa">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-overlay" [ngClass]="{ 'active': isAddModalOpen }">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>{{ isEditing ? 'Sửa Loại Sản Phẩm' : 'Thêm Loại Sản Phẩm' }}</h3>
+            <button class="close-btn" (click)="closeModal()">×</button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="categoryName">Tên Loại Sản Phẩm *</label>
+              <input id="categoryName" [(ngModel)]="currentCategory.ten" placeholder="Nhập tên loại sản phẩm" required>
+            </div>
+            <div class="form-group">
+              <label for="categoryCode">Mã Loại *</label>
+              <input id="categoryCode" [(ngModel)]="currentCategory.code" placeholder="Nhập mã loại sản phẩm" required>
+            </div>
+            <div class="form-group">
+              <label for="status">Trạng Thái</label>
+              <select id="status" [(ngModel)]="currentCategory.trangthai">
+                <option value="active">Hoạt động</option>
+                <option value="inactive">Không Hoạt Động</option>
+              </select>
+            </div>
+            <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+          </div>
+          <div class="modal-footer">
+            <button class="action-btn cancel-btn" (click)="closeModal()">Hủy</button>
+            <button class="action-btn save-btn" (click)="saveCategory()">Lưu</button>
+          </div>
+        </div>
+      </div>

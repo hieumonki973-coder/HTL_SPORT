@@ -1,0 +1,379 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Roboto:wght@100;300;400;500;700;900&display=swap"
+  rel="stylesheet">
+
+<div class="page-header">
+  <div>
+    <h1>Quản lý Đơn hàng</h1>
+    <small>Theo dõi các số liệu chính. Kiểm tra báo cáo và thông tin chi tiết.</small>
+  </div>
+  <div class="header-actions">
+    <button (click)="exportOrders()">
+      <span class="las la-file-export"></span> Xuất dữ liệu
+    </button>
+    <button (click)="logout()">
+      <span class="las fa-right-from-bracket"></span> Đăng xuất
+    </button>
+  </div>
+</div>
+
+<div class="user-cards">
+  <div class="card-single card-color-1">
+    <div class="card-info">
+      <h2>Tổng Đơn hàng</h2>
+      <small>Tổng số Đơn hàng trong hệ thống</small>
+    </div>
+    <div class="card-chart"><i class="fas fa-boxes"></i></div>
+    <span>{{ totalOrders || 0 }}</span>
+    <p>Tất cả Đơn hàng</p>
+  </div>
+
+  <div class="card-single card-color-2">
+    <div class="card-info">
+      <h2>Chờ xử lý</h2>
+      <small>Đơn hàng chờ xác nhận</small>
+    </div>
+    <div class="card-chart"><i class="fas fa-hourglass-half"></i></div>
+    <span>{{ pendingOrders || 0 }}</span>
+    <p>Cần xử lý</p>
+  </div>
+
+  <div class="card-single card-color-3">
+    <div class="card-info">
+      <h2>Đang giao</h2>
+      <small>Đơn hàng đang vận chuyển</small>
+    </div>
+    <div class="card-chart"><i class="fas fa-truck"></i></div>
+    <span>{{ shippingOrders || 0 }}</span>
+    <p>Đang giao hàng</p>
+  </div>
+
+  <div class="card-single card-color-4">
+    <div class="card-info">
+      <h2>Hoàn thành</h2>
+      <small>Đơn hàng đã giao thành công</small>
+    </div>
+    <div class="card-chart"><i class="fas fa-check-circle"></i></div>
+    <span>{{ completedOrders || 0 }}</span>
+    <p>Đã hoàn thành</p>
+  </div>
+</div>
+
+<div class="filters-container">
+  <div class="filters-row">
+    <div class="filter-group">
+      <label for="search">Tìm Kiếm</label>
+      <input type="text" id="search" [(ngModel)]="searchTerm" (input)="applyFilters()"
+        placeholder="Tìm theo tên sản phẩm hoặc khách hàng">
+    </div>
+
+    <div class="filter-group">
+      <label for="status">Trạng Thái</label>
+      <select id="status" [(ngModel)]="statusFilter" (change)="applyFilters()">
+        <option value="">Tất cả trạng thái</option>
+        <option value="pending">Chờ xử lý</option>
+        <option value="inprogress">Đang xử lý</option>
+        <option value="delivered">Hoàn thành</option>
+        <option value="return">Đã hủy</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="startDate">Từ Ngày</label>
+      <input type="date" id="startDate" [(ngModel)]="startDate" (change)="applyFilters()">
+    </div>
+
+    <div class="filter-group">
+      <label for="endDate">Đến Ngày</label>
+      <input type="date" id="endDate" [(ngModel)]="endDate" (change)="applyFilters()">
+    </div>
+
+    <div class="filter-actions">
+      <button class="btn btn-primary" (click)="applyFilters()">Tìm Kiếm</button>
+      <button class="btn btn-secondary" (click)="resetFilters()">Reset</button>
+    </div>
+  </div>
+</div>
+
+<div class="details">
+  <div class="recentOrders">
+    <div class="cardHeader">
+      <h2>Recent Orders</h2>
+    </div>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <td>ID</td>
+            <td>Hình ảnh</td>
+            <td>Tên sản phẩm</td>
+            <td>Khách hàng</td>
+            <td>SĐT</td>
+            <td>Email</td>
+            <td>Địa chỉ</td>
+            <td>Số tiền</td>
+            <td>Ngày Mua</td>
+            <td>Status</td>
+            <td>Action</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="isLoading">
+            <td colspan="11" class="loading-cell">
+              <div class="loading-spinner"></div>
+              Đang tải đơn hàng...
+            </td>
+          </tr>
+          <tr *ngIf="errorMessage">
+            <td colspan="11" class="error-cell">{{ errorMessage }}</td>
+          </tr>
+          <tr *ngIf="!isLoading && filteredOrders.length === 0">
+            <td colspan="11" class="empty-cell">Không có đơn hàng nào.</td>
+          </tr>
+          <tr *ngFor="let order of filteredOrders; trackBy: trackByOrderId" class="order-row">
+            <td class="order-id">{{ order.orderId }}</td>
+            <td class="product-image-cell">
+              <div class="product-images">
+                <ng-container *ngIf="order.cartItems && order.cartItems.length > 0; else noImage">
+                  <img *ngFor="let item of order.cartItems.slice(0, 2); let i = index" [src]="getProductImage(item)"
+                    [alt]="item.name" class="product-thumbnail" (error)="onImageError($event)"
+                    (load)="onImageLoad($event)">
+
+                  <div class="more-items" *ngIf="order.cartItems.length > 2">
+                    +{{ order.cartItems.length - 2 }}
+                  </div>
+                </ng-container>
+                <ng-template #noImage>
+                  <div class="no-image-placeholder">
+                    <i class="fas fa-image"></i>
+                  </div>
+                </ng-template>
+              </div>
+            </td>
+            <td class="product-name">{{ order.productName || 'N/A' }}</td>
+            <td class="customer-name">{{ order.customerInfo?.fullName || 'N/A' }}</td>
+            <td class="customer-phone">{{ order.customerInfo?.phone || 'N/A' }}</td>
+            <td class="customer-email">{{ order.customerInfo?.email || 'N/A' }}</td>
+            <td class="customer-address">{{ order.customerInfo?.address || 'N/A' }}</td>
+            <td class="order-amount">{{ formatCurrency(order.amount || 0) }}</td>
+            <td class="order-date">{{ order.createdAt | date:'dd/MM/yyyy' }}</td>
+            <td class="status-cell">
+              <div class="status-container">
+                <div class="status-badge" [ngClass]="'status-' + order.status.toLowerCase()">
+                  <i class="status-icon" [ngClass]="getStatusIcon(order.status)"></i>
+                  <select [(ngModel)]="order.status" (change)="updateOrderStatus(order.orderId, $event.target.value)"
+                    [disabled]="['delivered', 'returned', 'cancelled'].includes(order.status?.toLowerCase())"
+                    class="status-select" [ngClass]="'select-' + order.status.toLowerCase()">
+                    <option *ngFor="let status of getAvailableStatuses(order.status)" [value]="status.value">
+                      {{ status.label }}
+                    </option>
+                  </select>
+
+                </div>
+              </div>
+            </td>
+            <td class="action-cell">
+              <div class="action-buttons">
+                <button class="action-btn view-btn" (click)="viewOrderDetails(order)" title="Xem chi tiết">
+                  <i class="fas fa-eye"></i>
+                  <span class="action-label">Xem</span>
+                </button>
+                <button class="action-btn edit-btn" (click)="editOrder(order)" title="Chỉnh sửa"
+                  *ngIf="canEditOrder(order)">
+                  <i class="fas fa-edit"></i>
+                  <span class="action-label">Sửa</span>
+                </button>
+                <button class="action-btn delete-btn" (click)="deleteOrder(order)" title="Xóa"
+                  *ngIf="canDeleteOrder(order)">
+                  <i class="fas fa-trash"></i>
+                  <span class="action-label">Xóa</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for Order Details -->
+<div class="modal-overlay" [class.active]="showModal" (click)="closeModal()">
+  <div class="modal-content order-detail-modal" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3>Chi Tiết Đơn Hàng {{ selectedOrder?.orderId }}</h3>
+      <button class="close-btn" (click)="closeModal()">&times;</button>
+    </div>
+    <div class="order-details" *ngIf="selectedOrder">
+      <div class="detail-section customer-info">
+        <h4><i class="fas fa-user"></i> Thông tin khách hàng</h4>
+        <div class="info-grid">
+          <p><strong>Khách hàng:</strong> {{ selectedOrder.customerInfo?.fullName || 'N/A' }}</p>
+          <p><strong>SĐT:</strong> {{ selectedOrder.customerInfo?.phone || 'N/A' }}</p>
+          <p><strong>Email:</strong> {{ selectedOrder.customerInfo?.email || 'N/A' }}</p>
+          <p><strong>Địa chỉ:</strong> {{ selectedOrder.customerInfo?.address || 'N/A' }}</p>
+        </div>
+      </div>
+
+      <div class="detail-section order-info">
+        <h4><i class="fas fa-receipt"></i> Thông tin đơn hàng</h4>
+        <div class="info-grid">
+          <p><strong>Phương thức thanh toán:</strong> {{ selectedOrder.payment || 'N/A' }}</p>
+          <p><strong>Phương thức giao hàng:</strong> {{ selectedOrder.shippingMethod || 'N/A' }}</p>
+          <p><strong>Thời gian đặt hàng:</strong> {{ selectedOrder.createdAt | date:'dd/MM/yyyy HH:mm' }}</p>
+          <p><strong>Trạng thái:</strong>
+            <span class="status-badge" [ngClass]="'status-' + selectedOrder.status.toLowerCase()">
+              <i [ngClass]="getStatusIcon(selectedOrder.status)"></i>
+              {{ translateStatus(selectedOrder.status) }}
+            </span>
+          </p>
+          <p class="full-width"><strong>Ghi chú:</strong> {{ selectedOrder.notes || 'Không có ghi chú' }}</p>
+        </div>
+      </div>
+
+      <div class="detail-section products-info">
+        <h4><i class="fas fa-shopping-cart"></i> Sản phẩm trong đơn hàng</h4>
+        <div class="product-list">
+          <div class="product-item" *ngFor="let item of selectedOrder.cartItems">
+            <div class="product-image-container">
+              <img [src]="getProductImage(item)" [alt]="item.name" class="product-detail-image"
+                (error)="onImageError($event)" (load)="onImageLoad($event)">
+            </div>
+            <div class="product-info">
+              <h5>{{ item.name }}</h5>
+              <p><strong>Số lượng:</strong> {{ item.quantity }}</p>
+              <p><strong>Giá:</strong> {{ formatCurrency(item.price) }}</p>
+              <p><strong>Thành tiền:</strong> {{ formatCurrency(item.price * item.quantity) }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-section total-info">
+        <div class="total-amount">
+          <h4><i class="fas fa-calculator"></i> Tổng tiền: {{ formatCurrency(selectedOrder.amount || 0) }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for Edit Order -->
+<div class="modal-overlay" [class.active]="showEditModal" (click)="closeEditModal()">
+  <div class="modal-content edit-modal" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3>Chỉnh Sửa Đơn Hàng {{ editingOrder?.orderId }}</h3>
+      <button class="close-btn" (click)="closeEditModal()">&times;</button>
+    </div>
+    <div *ngIf="editingOrder" class="edit-form">
+      <div class="form-section">
+        <h4>Thông tin khách hàng</h4>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Họ tên:</label>
+            <input type="text" [(ngModel)]="editingOrder.customerInfo.fullName" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Số điện thoại:</label>
+            <input type="text" [(ngModel)]="editingOrder.customerInfo.phone" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Email:</label>
+            <input type="email" [(ngModel)]="editingOrder.customerInfo.email" class="form-control">
+          </div>
+          <div class="form-group full-width">
+            <label>Địa chỉ:</label>
+            <textarea [(ngModel)]="editingOrder.customerInfo.address" class="form-control" rows="3"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h4>Thông tin đơn hàng</h4>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Trạng thái:</label>
+            <select [(ngModel)]="editingOrder.status" class="form-control"
+              [disabled]="editingOrder.status === 'return' || editingOrder.status === 'delivered'">
+              <option *ngFor="let status of getAvailableStatuses(editingOrder.status)" [value]="status.value">{{
+                status.label }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Phương thức thanh toán:</label>
+            <select [(ngModel)]="editingOrder.payment" class="form-control">
+              <option value="COD">Thanh toán khi nhận hàng (COD)</option>
+              <option value="Banking">Chuyển khoản ngân hàng</option>
+              <option value="Credit Card">Thẻ tín dụng</option>
+              <option value="E-Wallet">Ví điện tử</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Phương thức giao hàng:</label>
+            <select [(ngModel)]="editingOrder.shippingMethod" class="form-control">
+              <option value="Standard">Giao hàng tiêu chuẩn</option>
+              <option value="Express">Giao hàng nhanh</option>
+              <option value="Same Day">Giao hàng trong ngày</option>
+            </select>
+          </div>
+          <div class="form-group full-width">
+            <label>Ghi chú:</label>
+            <textarea [(ngModel)]="editingOrder.notes" class="form-control" rows="3"
+              placeholder="Ghi chú thêm..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h4>Sản phẩm trong đơn hàng</h4>
+        <div class="cart-items">
+          <div *ngFor="let item of editingOrder.cartItems; let i = index" class="cart-item">
+            <div class="cart-item-image">
+              <img [src]="getProductImage(item)" [alt]="item.name" class="edit-product-image"
+                (error)="onImageError($event)" (load)="onImageLoad($event)">
+            </div>
+            <div class="cart-item-details">
+              <div class="form-group">
+                <label>Tên sản phẩm:</label>
+                <input type="text" [(ngModel)]="item.name" class="form-control">
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Số lượng:</label>
+                  <input type="number" [(ngModel)]="item.quantity" (input)="calculateTotal()" class="form-control"
+                    min="1">
+                </div>
+                <div class="form-group">
+                  <label>Giá:</label>
+                  <input type="number" [(ngModel)]="item.price" (input)="calculateTotal()" class="form-control" min="0">
+                </div>
+              </div>
+            </div>
+            <button type="button" class="btn-remove-item" (click)="removeCartItem(i)" title="Xóa sản phẩm">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <button type="button" class="btn btn-secondary add-item-btn" (click)="addCartItem()">
+          <i class="fas fa-plus"></i> Thêm sản phẩm
+        </button>
+      </div>
+
+      <div class="form-section">
+        <div class="total-amount">
+          <h4><i class="fas fa-calculator"></i> Tổng tiền: {{ formatCurrency(editingOrder.amount || 0) }}</h4>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-secondary" (click)="closeEditModal()">Hủy</button>
+        <button class="btn btn-primary" (click)="saveOrderChanges()" [disabled]="isSaving">
+          <i class="fas fa-save"></i> {{ isSaving ? 'Đang lưu...' : 'Lưu thay đổi' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

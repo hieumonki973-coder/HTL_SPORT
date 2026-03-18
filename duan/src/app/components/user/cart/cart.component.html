@@ -1,0 +1,260 @@
+<section class="cart-section">
+
+  <!-- ── PAGE HEADER ── -->
+  <div class="cart-page-header">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a routerLink="/home">Trang chủ</a>
+        <span class="sep">/</span>
+        <span>Giỏ hàng</span>
+      </nav>
+      <h1 class="page-title">
+        Giỏ hàng
+        <span class="item-count" *ngIf="cartItems.length > 0">({{ cartItems.length }} sản phẩm)</span>
+      </h1>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- ── HAS ITEMS ── -->
+    <div class="cart-layout" *ngIf="cartItems.length > 0; else emptyCart">
+
+      <!-- ════ LEFT: CART TABLE ════ -->
+      <div class="cart-left">
+
+        <!-- Bulk actions bar -->
+        <div class="bulk-bar">
+          <label class="select-all-label">
+            <input
+              type="checkbox"
+              class="asics-checkbox"
+              [checked]="isAllSelected()"
+              (change)="toggleSelectAll($event)"
+            />
+            <span>Chọn tất cả ({{ cartItems.length }})</span>
+          </label>
+
+          <button
+            class="btn-delete-selected"
+            (click)="removeSelectedItems()"
+            [disabled]="getSelectedCount() === 0"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"/>
+              <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/>
+              <path d="M10 11v6M14 11v6"/>
+              <path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/>
+            </svg>
+            Xóa đã chọn ({{ getSelectedCount() }})
+          </button>
+        </div>
+
+        <!-- Cart items -->
+        <div class="cart-items">
+          <div
+            class="cart-item"
+            *ngFor="let item of cartItems; let i = index"
+            [class.is-selected]="item.selected"
+            [style.animation-delay]="i * 50 + 'ms'"
+          >
+            <!-- Checkbox -->
+            <div class="item-check">
+              <input
+                type="checkbox"
+                class="asics-checkbox"
+                [(ngModel)]="item.selected"
+                (change)="onItemSelectionChange()"
+              />
+            </div>
+
+            <!-- Image -->
+            <div class="item-img-wrap">
+              <img
+                *ngIf="getItemImage(item)"
+                [src]="getItemImage(item)"
+                [alt]="item.product?.ten || 'Sản phẩm'"
+                class="item-img"
+              />
+              <div class="img-placeholder" *ngIf="!getItemImage(item)">
+                <svg viewBox="0 0 40 40" fill="none" stroke="#ccc" stroke-width="1.5">
+                  <rect x="4" y="4" width="32" height="32" rx="2"/>
+                  <path d="M4 28l8-8 6 6 5-5 9 9"/>
+                  <circle cx="14" cy="14" r="3"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Info -->
+            <div class="item-details">
+              <p class="item-brand">HTL-SPORT</p>
+              <p class="item-name" [title]="item.product?.ten || 'Không có tên'">{{ item.product?.ten || 'Không có tên' }}</p>
+              <div class="item-variants" *ngIf="item.variant">
+                <span class="variant-chip">Size {{ getSize(item) }}</span>
+                <span class="variant-chip color-chip">
+                  {{ getColor(item) }}
+                </span>
+              </div>
+            </div>
+
+            <!-- Price -->
+            <div class="item-price-col">
+              <span class="item-unit-price">{{ getVariantPrice(item) | number }}₫</span>
+            </div>
+
+            <!-- Quantity -->
+            <div class="item-qty-col">
+              <div class="qty-ctrl">
+                <button
+                  class="qty-btn"
+                  (click)="decrease(item)"
+                  [disabled]="item.soluong <= 1"
+                  aria-label="Giảm"
+                >
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="8" x2="13" y2="8"/>
+                  </svg>
+                </button>
+                <input
+                  type="number"
+                  class="qty-input"
+                  [value]="item.soluong"
+                  readonly
+                />
+                <button
+                  class="qty-btn"
+                  (click)="increase(item)"
+                  [disabled]="item.soluong >= (item.variant?.soluong ?? Infinity)"
+                  aria-label="Tăng"
+                >
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="8" y1="3" x2="8" y2="13"/>
+                    <line x1="3" y1="8" x2="13" y2="8"/>
+                  </svg>
+                </button>
+              </div>
+              <div class="stock-warning" *ngIf="stockWarnings[getVariantId(item)]">
+                ⚠ {{ stockWarnings[getVariantId(item)] }}
+              </div>
+            </div>
+
+            <!-- Subtotal -->
+            <div class="item-subtotal-col">
+              <span class="item-subtotal">{{ getVariantPrice(item) * item.soluong | number }}₫</span>
+            </div>
+
+            <!-- Remove -->
+            <button class="btn-remove" (click)="removeItem(item)" title="Xóa sản phẩm">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Bottom actions -->
+        <div class="cart-footer">
+          <a [routerLink]="['/home']" class="btn-continue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+            Tiếp tục mua sắm
+          </a>
+        </div>
+      </div>
+
+      <!-- ════ RIGHT: SUMMARY ════ -->
+      <div class="cart-right">
+        <h2 class="summary-heading">Tổng đơn hàng</h2>
+
+        <!-- Selected badge -->
+        <div class="selected-badge" [class.has-selection]="getSelectedCount() > 0">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/>
+            <path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/>
+            <path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/>
+          </svg>
+          <span *ngIf="getSelectedCount() === 0">Chưa chọn sản phẩm nào</span>
+          <span *ngIf="getSelectedCount() > 0">{{ getSelectedCount() }} sản phẩm đã chọn</span>
+        </div>
+
+        <!-- Totals -->
+        <div class="summary-rows">
+          <div class="summary-row">
+            <span class="row-label">Tạm tính</span>
+            <span class="row-val">{{ getSelectedTotal() | number }}₫</span>
+          </div>
+          <div class="summary-row">
+            <span class="row-label">Phí vận chuyển</span>
+            <span class="row-val" [class.free-ship]="getShippingFee() === 0">
+              {{ getShippingFee() === 0 ? 'Miễn phí' : (getShippingFee() | number) + '₫' }}
+            </span>
+          </div>
+          <div class="summary-row grand">
+            <span>TỔNG CỘNG</span>
+            <span class="grand-val">{{ getSelectedTotal() + getShippingFee() | number }}₫</span>
+          </div>
+          <p class="vat-note">Đã bao gồm VAT 10%</p>
+        </div>
+
+        <!-- CTA -->
+        <button
+          class="btn-checkout"
+          (click)="goToCheckout()"
+          [disabled]="getSelectedCount() === 0"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          Đặt hàng ({{ getSelectedCount() }})
+        </button>
+
+        <p class="checkout-hint" *ngIf="getSelectedCount() === 0">
+          Vui lòng chọn ít nhất 1 sản phẩm
+        </p>
+
+        <!-- Trust -->
+        <div class="trust-row">
+          <div class="trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span>Giao toàn quốc</span>
+          </div>
+          <div class="trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+            </svg>
+            <span>Đổi trả 30 ngày</span>
+          </div>
+          <div class="trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            <span>Bảo mật SSL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── EMPTY STATE ── -->
+    <ng-template #emptyCart>
+      <div class="empty-state">
+        <div class="empty-icon">
+          <svg viewBox="0 0 80 80" fill="none">
+            <circle cx="40" cy="40" r="38" stroke="#e8e8e8" stroke-width="2"/>
+            <path d="M22 30h4l5 18h18l4-14H30" stroke="#ccc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="35" cy="52" r="2.5" fill="#ccc"/>
+            <circle cx="47" cy="52" r="2.5" fill="#ccc"/>
+          </svg>
+        </div>
+        <h2 class="empty-title">Giỏ hàng trống</h2>
+        <p class="empty-sub">Bạn chưa thêm sản phẩm nào vào giỏ hàng.</p>
+        <a [routerLink]="['/home']" class="btn-shop-now">Khám phá sản phẩm</a>
+      </div>
+    </ng-template>
+
+  </div>
+</section>

@@ -1,0 +1,63 @@
+[{
+  "_id": {
+    "$oid": "700000000000000000000001"
+  },
+  "ten": "S",
+  "code": "S",
+  "thu_tu": 1,
+  "trangthai": "active"
+},
+{
+  "_id": {
+    "$oid": "700000000000000000000002"
+  },
+  "ten": "M",
+  "code": "M",
+  "thu_tu": 2,
+  "trangthai": "active"
+},
+{
+  "_id": {
+    "$oid": "700000000000000000000003"
+  },
+  "ten": "L",
+  "code": "L",
+  "thu_tu": 3,
+  "trangthai": "active"
+},
+{
+  "_id": {
+    "$oid": "700000000000000000000004"
+  },
+  "ten": "XL",
+  "code": "XL",
+  "thu_tu": 4,
+  "trangthai": "active"
+},
+{
+  "_id": {
+    "$oid": "700000000000000000000005"
+  },
+  "ten": "Free Size",
+  "code": "FS",
+  "thu_tu": 99,
+  "trangthai": "active"
+},
+{
+  "_id": {
+    "$oid": "700000000000000000000006"
+  },
+  "ten": "4U",
+  "code": "4",
+  "thu_tu": 4,
+  "trangthai": "active"
+},
+{
+  "_id": {
+    "$oid": "700000000000000000000007"
+  },
+  "ten": "5U",
+  "code": "5",
+  "thu_tu": 5,
+  "trangthai": "active"
+}]

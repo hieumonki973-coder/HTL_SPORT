@@ -1,0 +1,577 @@
+[{
+  "_id": {
+    "$oid": "68c29b5feb32ca8f85d340c5"
+  },
+  "createdAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "luotxem": 50,
+  "mota": "gậy bida",
+  "ten": "Gậy Bida Cuppas9-1",
+  "trangthai": "instock",
+  "deleted_at": null,
+  "ten_loai": "co-bida",
+  "id_thuonghieu": {
+    "$oid": "66a333333333333333333334"
+  },
+  "categoryId": {
+    "$oid": "66a111111111111111111111"
+  },
+  "stt": "01"
+},
+{
+  "_id": {
+    "$oid": "68c2a15feb32ca8f85d340c8"
+  },
+  "createdAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "luotxem": 32,
+  "mota": "- Vợt cầu lông Yonex Astrox 88D pro 2024 là một trong những dòng sản phẩm được đánh giá cao của thương hiệu cầu lông hàng đầu thế giới - Yonex. Với nhiều tính năng tiên tiến và thiết kế đẹp mắt, vợt cầu lông này đã thu hút sự chú ý của rất nhiều người chơi cầu lông chuyên nghiệp và yêu thích môn thể thao này.\\n\n \n- Vợt Cầu Lông Yonex Astrox 88D Pro 2024 là một cây vợt cao cấp được sản xuất bởi thương hiệu Yonex. Với thiết kế độc đáo, khung vợt được làm từ Graphite HM, CFR, và Tungsten, giúp tăng cường sức mạnh và cung cấp phản đòn uy lực. Đũa vợt sử dụng công nghệ HM Graphite, 2G-Namd™ FLEX FORCE, Ultra PE Fiber, và NEW Built-in T-Joint, tạo ra sự ổn định và cảm giác tốt trong mỗi cú đánh. Với chiều dài dài hơn 10 mm, vợt Astrox 88D Pro 2024 mang đến sự linh hoạt và hiệu suất cao cho người chơi. \\n\n \n- Vợt cầu lông Yonex Astrox 88D pro 2024 có trọng lượng nhẹ, chỉ khoảng 83g và cân bằng ở phía đầu vợt, giúp người chơi dễ dàng điều khiển và di chuyển vợt một cách linh hoạt. Điểm đặc biệt của sản phẩm này là sự kết hợp giữa các loại vật liệu để tạo nên cấu trúc vợt nhẹ nhưng vẫn cứng cáp và bền bỉ. Với những tính năng vượt trội này, Yonex Astrox 88D pro 2024 đã trở thành lựa chọn hàng đầu của rất nhiều tay vợt chuyên nghiệp và cũng được nhiều người chơi cầu lông yêu thích.\\n",
+  "ten": "Vợt Cầu Lông Yonex Astrox Nextage - Chính Hãng",
+  "trangthai": "instock",
+  "deleted_at": null,
+  "ten_loai": "vot-cau-long",
+  "id_thuonghieu": {
+    "$oid": "66a333333333333333333333"
+  },
+  "categoryId": {
+    "$oid": "69aadf8bad02fd965eccdf4b"
+  },
+  "stt": "02"
+},
+{
+  "_id": {
+    "$oid": "68c8f061e6f7e8c51e24f146"
+  },
+  "desc": "Giày cầu lông yonex",
+  "createdAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "ten": "Giày Cầu Lông Yonex Antos Xanh Đen - Chính Hãng\n",
+  "mota": "Yonex Antos là mẫu giày cầu lông được thiết kế dành cho người chơi phong trào đến bán chuyên, chú trọng sự êm ái, ổn định và linh hoạt trong từng bước di chuyển trên sân.\n\n \n\nĐặc điểm nổi bật:\n\n \n\n- Đế giày bám sân tốt: Cao su chất lượng cao giúp chống trơn trượt, hỗ trợ đổi hướng nhanh và an toàn.\n\n \n\n- Đệm êm, giảm chấn hiệu quả: Hấp thụ lực tốt khi bật nhảy và tiếp đất, hạn chế mỏi chân khi chơi lâu.\n\n \n\n- Thân giày thoáng khí: Chất liệu lưới giúp thoát hơi nhanh, mang lại cảm giác khô ráo, dễ chịu.\n\n \n\n- Form ôm chân, ổn định: Hỗ trợ cổ chân tốt, giúp di chuyển linh hoạt và tự tin hơn.\n\n \n\n- Thiết kế thể thao, năng động: Phù hợp cả nam và nữ, dễ phối đồ khi tập luyện và thi đấu.",
+  "trangthai": "instock",
+  "deleted_at": null,
+  "ten_loai": "giay-cau-long",
+  "id_thuonghieu": {
+    "$oid": "66a333333333333333333333"
+  },
+  "categoryId": {
+    "$oid": "69aadffbad02fd965eccdf4e"
+  },
+  "stt": "03"
+},
+{
+  "_id": {
+    "$oid": "68c8f23ee6f7e8c51e24f149"
+  },
+  "desc": "Áo bóng đá đội tuyển QATAR",
+  "createdAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "ten": "Áo bóng đá QATAR",
+  "mota": "– Kết cấu vải mềm poly chống co rút tốt và không nhăn, không xù, không nhão\\n– Khô, thoáng, nhẹ với công nghệ đệt 2 mặt tạo lỗ thoáng khí giúp thoát nhiệt nhanh\\n– Thiết kế chi tiết đặc trưng hoa văn QATAR chìm tạo thêm điểm nhấn cao cấp cho chiếc áo\\n– Phối viền cổ trẻ trung, đơn giản\\n– Đường may đều, chắc chắn, không bục chỉ\\n– Khả năng chống bụi bẩn tốt, dễ giặt, nhanh khô\\n– Màu sắc đa dạng, bền màu, phản sáng tốt\"\n",
+  "trangthai": "instock",
+  "deleted_at": null,
+  "ten_loai": "ao-bong-da",
+  "id_thuonghieu": {
+    "$oid": "65f1a9c2e4b0c123456789ab"
+  },
+  "categoryId": {
+    "$oid": "700000000000000000000002"
+  },
+  "stt": "04"
+},
+{
+  "_id": {
+    "$oid": "68c8f310e6f7e8c51e24f14a"
+  },
+  "desc": "Áo bóng đá đội tuyển Thái Lan",
+  "createdAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "ten": "Áo bóng đá Thái Lan",
+  "mota": "– Kết cấu vải mềm poly chống co rút tốt và không nhăn, không xù, không nhão\\n– Khô, thoáng, nhẹ với công nghệ đệt 2 mặt tạo lỗ thoáng khí giúp thoát nhiệt nhanh\\n– Thiết kế chi tiết đặc trưng hoa văn QATAR chìm tạo thêm điểm nhấn cao cấp cho chiếc áo\\n– Phối viền cổ trẻ trung, đơn giản\\n– Đường may đều, chắc chắn, không bục chỉ\\n– Khả năng chống bụi bẩn tốt, dễ giặt, nhanh khô\\n– Màu sắc đa dạng, bền màu, phản sáng tốt\"\n",
+  "trangthai": "instock",
+  "deleted_at": null,
+  "ten_loai": "ao-bong-da",
+  "id_thuonghieu": {
+    "$oid": "65f1a9c2e4b0c123456789ab"
+  },
+  "categoryId": {
+    "$oid": "69aadd82ad02fd965eccdf44"
+  },
+  "stt": "05"
+},
+{
+  "_id": {
+    "$oid": "68c8f3e9e6f7e8c51e24f14b"
+  },
+  "desc": "Áo bóng chuyền Hãng BeyonoZane",
+  "createdAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "sold": 15,
+  "ten": "Áo bóng chuyền BeyonoZane",
+  "mota": "Chất liệu poly-spandex cao cấp, co giãn 4 chiều, thấm hút tốt.\n\nÁo thiết kế cổ tròn tay ngắn, form ôm vừa tôn dáng.\n\nQuần short thể thao thoải mái, co giãn tốt, không giới hạn vận động.\n\nĐường may chắc chắn, tỉ mỉ, bền đẹp qua thời gian.\n\nMàu sắc mạnh mẽ, trẻ trung, đậm chất thể thao.\n\nPhù hợp cho cả thi đấu, luyện tập và mặc hàng ngày.",
+  "trangthai": "instock",
+  "deleted_at": null,
+  "ten_loai": "ao-bong-chuyen",
+  "id_thuonghieu": {
+    "$oid": "65f1a9c2e4b0c123456789ab"
+  },
+  "categoryId": {
+    "$oid": "696db6887f5ab345bfea1189"
+  },
+  "stt": "06"
+},
+{
+  "_id": {
+    "$oid": "68c8f548e6f7e8c51e24f14c"
+  },
+  "desc": "Giày bóng chuyền Hãng BeyonoZane",
+  "createdAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "ten": "Giày bóng chuyền BeyonoZane",
+  "mota": "Chất liệu poly-spandex cao cấp, co giãn 4 chiều, thấm hút tốt.\n\nÁo thiết kế cổ tròn tay ngắn, form ôm vừa tôn dáng.\n\nQuần short thể thao thoải mái, co giãn tốt, không giới hạn vận động.\n\nĐường may chắc chắn, tỉ mỉ, bền đẹp qua thời gian.\n\nMàu sắc mạnh mẽ, trẻ trung, đậm chất thể thao.\n\nPhù hợp cho cả thi đấu, luyện tập và mặc hàng ngày.",
+  "trangthai": "instock",
+  "deleted_at": null,
+  "ten_loai": "giay-bong-chuyen",
+  "id_thuonghieu": {
+    "$oid": "65f1a9c2e4b0c123456789ab"
+  },
+  "categoryId": {
+    "$oid": "696db6887f5ab345bfea1189"
+  },
+  "stt": "07"
+},
+{
+  "_id": {
+    "$oid": "68c8f5e9e6f7e8c51e24f14d"
+  },
+  "desc": "Cơ bida",
+  "createdAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "ten": "Cơ Longonis 3C",
+  "mota": "THÔNG SỐ KỸ THUẬT\\n\\nVật liệu\\n\\nCán cơ: Gỗ Maple (Thông)\\nNgọn cơ: Gỗ Maple (Thông)\\n\\nTrọng lượng\\n\\nDòng cơ Libre/Líp/1C: Ngọn Maple C67 trọng lượng từ 460gr đến 490gr\\nDòng cơ Ba băng/Carom/3C: Ngọn Maple E71 trọng lượng từ 500gr đến 540gr\\n\\nĐầu cơ\\n\\nLoại đầu cơ: Da Vinci\\nKích thước đầu cơ: 12 mm\\n\\nChiều dài\\n\\nCán cơ: 72cm\\nNgọn cơ: E/C69 – 69cm; E/C71 – 70.5cm\\nTổng chiều dài cơ: Từ 140 đến 142cm",
+  "trangthai": "instock",
+  "deleted_at": null,
+  "ten_loai": "co-bida",
+  "id_thuonghieu": {
+    "$oid": "65f1a9c2e4b0c123456789ab"
+  },
+  "categoryId": {
+    "$oid": "66a111111111111111111111"
+  },
+  "stt": "08"
+},
+{
+  "_id": {
+    "$oid": "68c8f813e6f7e8c51e24f151"
+  },
+  "desc": "Vợt cầu lông ",
+  "createdAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "sold": 5,
+  "ten": "Vợt Cầu Lông Yonex Astrox 100 Game VA - Chính Hãng",
+  "mota": "- Vợt cầu lông Yonex Astrox 100 Game VA Lấy cảm hứng từ phiên bản cao cấp Astrox 100ZZ VA, cây vợt này được tinh chỉnh khéo léo mang đến sức mạnh tấn công vượt trội, dễ làm quen và đặc biệt có mức giá hợp lý hơn, phù hợp cho người chơi trình độ thấp hơn.\n\n- Astrox 100 Game VA sử dụng một tổ hợp vật liệu tiên tiến được lựa chọn để nâng cao hiệu suất. Trong đó, HM Graphite cung cấp độ cứng cáp và bền bỉ cho khung vợt, đảm bảo vợt không bị biến dạng dưới lực căng cao và những cú va chạm mạnh. Các hạt Tungsten được tích hợp vào khung giúp tăng cường sức mạnh cho các cú đập và cải thiện độ ổn định của mặt vợt khi tiếp xúc cầu.\n\n- Thuộc phân khúc giá tầm trung, Astrox 100 Game VA được thừa hưởng những công nghệ tinh túy nhất từ dòng cao cấp hơn, tạo nên sự khác biệt rõ rệt khi đánh. Trong đó, Rotational Generator System được  phân bố trọng lượng tập trung ở đầu vợt, khớp nối và cán vợt. Từ đó, cung cấp những cú đẩy cầu với sức mạnh bùng nổ, đồng thời linh hoạt giữa các pha chuyển tiếp giữa các pha cầu.\n\n",
+  "trangthai": "instock",
+  "deleted_at": null,
+  "ten_loai": "vot-cau-long",
+  "id_thuonghieu": {
+    "$oid": "66a333333333333333333333"
+  },
+  "categoryId": {
+    "$oid": "69aadf8bad02fd965eccdf4b"
+  },
+  "stt": "09"
+},
+{
+  "_id": {
+    "$oid": "68c8f8dde6f7e8c51e24f152"
+  },
+  "desc": "Áo Polo cầu lông ",
+  "createdAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "ten": "Áo Polo Cầu Lông Nam Trắng",
+  "mota": "Áo thun cầu lông nam Li-Ning QA được chế tác từ 100% polyester, kết hợp công nghệ vải AT DRY tiên tiến để mang lại tính chất thấm hút ẩm vượt trội. Công nghệ tiên tiến này đảm bảo khô nhanh và thoát mồ hôi hiệu quả, hút độ ẩm ra khỏi bề mặt da và giúp điều chỉnh nhiệt độ cơ thể. Do đó, người mặc có thể luôn khô ráo và thoải mái ngay cả trong các buổi tập luyện hoặc thi đấu cường độ cao. Chất liệu thoáng khí, kết hợp với thiết kế thông gió, tăng cường lưu thông không khí, góp phần tạo cảm giác mát mẻ, tươi mới trong suốt quá trình chơi. Khả năng khô nhanh và vải hiệu suất cao của áo thun khiến nó trở thành lựa chọn tuyệt vời cho các vận động viên muốn duy trì sự thoải mái trong quá trình hoạt động thể chất. ",
+  "trangthai": "instock",
+  "deleted_at": null,
+  "ten_loai": "ao-cau-long",
+  "id_thuonghieu": {
+    "$oid": "65f1a9c2e4b0c123456789ab"
+  },
+  "categoryId": {
+    "$oid": "69aada46ad02fd965eccdf3d"
+  },
+  "stt": "10"
+},
+{
+  "_id": {
+    "$oid": "68c8f970e6f7e8c51e24f153"
+  },
+  "desc": "Giày Bóng Chuyền promax_muran",
+  "createdAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "ten": "Giày Bóng Chuyền promax_muran",
+  "mota": "Chất liệu poly-spandex cao cấp, co giãn 4 chiều, thấm hút tốt.\n\nÁo thiết kế cổ tròn tay ngắn, form ôm vừa tôn dáng.\n\nQuần short thể thao thoải mái, co giãn tốt, không giới hạn vận động.\n\nĐường may chắc chắn, tỉ mỉ, bền đẹp qua thời gian.\n\nMàu sắc mạnh mẽ, trẻ trung, đậm chất thể thao.\n\nPhù hợp cho cả thi đấu, luyện tập và mặc hàng ngày.",
+  "trangthai": "instock",
+  "deleted_at": null,
+  "ten_loai": "giay-cau-long",
+  "id_thuonghieu": {
+    "$oid": "65f1a9c2e4b0c123456789ab"
+  },
+  "categoryId": {
+    "$oid": "696db6887f5ab345bfea1189"
+  },
+  "stt": "11"
+},
+{
+  "_id": {
+    "$oid": "68c8f9fce6f7e8c51e24f154"
+  },
+  "desc": "Quần áo thủ môn",
+  "createdAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "ten": "Quần áo thủ môn",
+  "mota": "– Kết cấu vải mềm poly chống co rút tốt và không nhăn, không xù, không nhão\\n– Khô, thoáng, nhẹ với công nghệ đệt 2 mặt tạo lỗ thoáng khí giúp thoát nhiệt nhanh\\n– Thiết kế chi tiết đặc trưng hoa văn QATAR chìm tạo thêm điểm nhấn cao cấp cho chiếc áo\\n– Phối viền cổ trẻ trung, đơn giản\\n– Đường may đều, chắc chắn, không bục chỉ\\n– Khả năng chống bụi bẩn tốt, dễ giặt, nhanh khô\\n– Màu sắc đa dạng, bền màu, phản sáng tốt\"\n",
+  "trangthai": "instock",
+  "deleted_at": null,
+  "ten_loai": "ao-bong-da",
+  "id_thuonghieu": {
+    "$oid": "65f1a9c2e4b0c123456789ab"
+  },
+  "categoryId": {
+    "$oid": "700000000000000000000002"
+  },
+  "stt": "12"
+},
+{
+  "_id": {
+    "$oid": "68c8fa76e6f7e8c51e24f155"
+  },
+  "desc": "Áo bóng đá BARCELONA",
+  "createdAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "ten": "Áo bóng đá BARCELONA",
+  "mota": "– Kết cấu vải mềm poly chống co rút tốt và không nhăn, không xù, không nhão\\n– Khô, thoáng, nhẹ với công nghệ đệt 2 mặt tạo lỗ thoáng khí giúp thoát nhiệt nhanh\\n– Thiết kế chi tiết đặc trưng hoa văn QATAR chìm tạo thêm điểm nhấn cao cấp cho chiếc áo\\n– Phối viền cổ trẻ trung, đơn giản\\n– Đường may đều, chắc chắn, không bục chỉ\\n– Khả năng chống bụi bẩn tốt, dễ giặt, nhanh khô\\n– Màu sắc đa dạng, bền màu, phản sáng tốt\"\n",
+  "trangthai": "instock",
+  "deleted_at": null,
+  "ten_loai": "ao-bong-da",
+  "id_thuonghieu": {
+    "$oid": "65f1a9c2e4b0c123456789ab"
+  },
+  "categoryId": {
+    "$oid": "700000000000000000000002"
+  },
+  "stt": "13"
+},
+{
+  "_id": {
+    "$oid": "68c8fae5e6f7e8c51e24f156"
+  },
+  "desc": "Áo bóng đá Manchester-United",
+  "createdAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "ten": "Áo bóng đá Manchester-United",
+  "mota": "– Kết cấu vải mềm poly chống co rút tốt và không nhăn, không xù, không nhão\\n– Khô, thoáng, nhẹ với công nghệ đệt 2 mặt tạo lỗ thoáng khí giúp thoát nhiệt nhanh\\n– Thiết kế chi tiết đặc trưng hoa văn QATAR chìm tạo thêm điểm nhấn cao cấp cho chiếc áo\\n– Phối viền cổ trẻ trung, đơn giản\\n– Đường may đều, chắc chắn, không bục chỉ\\n– Khả năng chống bụi bẩn tốt, dễ giặt, nhanh khô\\n– Màu sắc đa dạng, bền màu, phản sáng tốt\"\n",
+  "trangthai": "instock",
+  "deleted_at": null,
+  "ten_loai": "ao-bong-da",
+  "id_thuonghieu": {
+    "$oid": "65f1a9c2e4b0c123456789ab"
+  },
+  "categoryId": {
+    "$oid": "700000000000000000000002"
+  },
+  "stt": "14"
+},
+{
+  "_id": {
+    "$oid": "68c8fb4ae6f7e8c51e24f157"
+  },
+  "desc": "Áo bóng đá Real-Marid",
+  "createdAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "ten": "Áo bóng đá Real-Marid",
+  "mota": "– Kết cấu vải mềm poly chống co rút tốt và không nhăn, không xù, không nhão\\n– Khô, thoáng, nhẹ với công nghệ đệt 2 mặt tạo lỗ thoáng khí giúp thoát nhiệt nhanh\\n– Thiết kế chi tiết đặc trưng hoa văn QATAR chìm tạo thêm điểm nhấn cao cấp cho chiếc áo\\n– Phối viền cổ trẻ trung, đơn giản\\n– Đường may đều, chắc chắn, không bục chỉ\\n– Khả năng chống bụi bẩn tốt, dễ giặt, nhanh khô\\n– Màu sắc đa dạng, bền màu, phản sáng tốt\"\n",
+  "trangthai": "instock",
+  "deleted_at": null,
+  "ten_loai": "ao-bong-da",
+  "id_thuonghieu": {
+    "$oid": "65f1a9c2e4b0c123456789ab"
+  },
+  "categoryId": {
+    "$oid": "700000000000000000000002"
+  },
+  "stt": "15"
+},
+{
+  "_id": {
+    "$oid": "68c8fb89e6f7e8c51e24f158"
+  },
+  "desc": "Cơ Circal-cl-pro",
+  "createdAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "sold": 30,
+  "ten": "Cơ Circal-cl-pro",
+  "mota": "THÔNG SỐ KỸ THUẬT\\n\\nVật liệu\\n\\nCán cơ: Gỗ Maple (Thông)\\nNgọn cơ: Gỗ Maple (Thông)\\n\\nTrọng lượng\\n\\nDòng cơ Libre/Líp/1C: Ngọn Maple C67 trọng lượng từ 460gr đến 490gr\\nDòng cơ Ba băng/Carom/3C: Ngọn Maple E71 trọng lượng từ 500gr đến 540gr\\n\\nĐầu cơ\\n\\nLoại đầu cơ: Da Vinci\\nKích thước đầu cơ: 12 mm\\n\\nChiều dài\\n\\nCán cơ: 72cm\\nNgọn cơ: E/C69 – 69cm; E/C71 – 70.5cm\\nTổng chiều dài cơ: Từ 140 đến 142cm",
+  "trangthai": "instock",
+  "deleted_at": null,
+  "ten_loai": "co-bida",
+  "id_thuonghieu": {
+    "$oid": "65f1a9c2e4b0c123456789ab"
+  },
+  "categoryId": {
+    "$oid": "66a111111111111111111111"
+  },
+  "stt": "16"
+},
+{
+  "_id": {
+    "$oid": "68c8fc4ae6f7e8c51e24f159"
+  },
+  "desc": "Cơ Cuppa-mt2",
+  "createdAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "ten": "Cơ Cuppa-mt2",
+  "mota": "THÔNG SỐ KỸ THUẬT\\n\\nVật liệu\\n\\nCán cơ: Gỗ Maple (Thông)\\nNgọn cơ: Gỗ Maple (Thông)\\n\\nTrọng lượng\\n\\nDòng cơ Libre/Líp/1C: Ngọn Maple C67 trọng lượng từ 460gr đến 490gr\\nDòng cơ Ba băng/Carom/3C: Ngọn Maple E71 trọng lượng từ 500gr đến 540gr\\n\\nĐầu cơ\\n\\nLoại đầu cơ: Da Vinci\\nKích thước đầu cơ: 12 mm\\n\\nChiều dài\\n\\nCán cơ: 72cm\\nNgọn cơ: E/C69 – 69cm; E/C71 – 70.5cm\\nTổng chiều dài cơ: Từ 140 đến 142cm",
+  "trangthai": "instock",
+  "deleted_at": null,
+  "ten_loai": "co-bida",
+  "id_thuonghieu": {
+    "$oid": "65f1a9c2e4b0c123456789ab"
+  },
+  "categoryId": {
+    "$oid": "66a111111111111111111111"
+  },
+  "stt": "17"
+},
+{
+  "_id": {
+    "$oid": "68d3986fd74d38db80805630"
+  },
+  "desc": "Phụ kiện bóng chuyền",
+  "createdAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "ten": "Quả bóng chuyền Động lực 220C",
+  "mota": " Chất liệu : Da PU\n\n♢ Chu vi : 650 - 670 mm.   \n\n♢ Trọng Lượng : 260 - 280 gram   \n\n♢ Độ nảy: 90 - 120 cm   ",
+  "trangthai": "instock",
+  "deleted_at": null,
+  "ten_loai": "Thể thao",
+  "id_thuonghieu": {
+    "$oid": "65f1a9c2e4b0c123456789ab"
+  },
+  "categoryId": {
+    "$oid": "69aac403ad02fd965eccdf2b"
+  },
+  "stt": "18"
+},
+{
+  "_id": {
+    "$oid": "68d398d6d74d38db80805631"
+  },
+  "desc": "Phụ kiện bóng đá",
+  "createdAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "ten": "Quả bóng đá 2030",
+  "mota": " Chất liệu : Da PU\n\n♢ Chu vi : 650 - 670 mm.   \n\n♢ Trọng Lượng : 260 - 280 gram   \n\n♢ Độ nảy: 90 - 120 cm   ",
+  "trangthai": "instock",
+  "deleted_at": null,
+  "ten_loai": "phu-kien",
+  "id_thuonghieu": {
+    "$oid": "65f1a9c2e4b0c123456789ab"
+  },
+  "categoryId": {
+    "$oid": "69aac403ad02fd965eccdf2b"
+  },
+  "stt": "19"
+},
+{
+  "_id": {
+    "$oid": "68d39c8ed74d38db80805633"
+  },
+  "desc": "Phụ kiện bóng đá",
+  "createdAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "ten": "Túi rút aka cam",
+  "mota": " Chất liệu : Da PU\n\n♢ Chu vi : 650 - 670 mm.   \n\n♢ Trọng Lượng : 260 - 280 gram   \n\n♢ Độ nảy: 90 - 120 cm   ",
+  "trangthai": "instock",
+  "deleted_at": null,
+  "ten_loai": "Thể thao",
+  "id_thuonghieu": {
+    "$oid": "65f1a9c2e4b0c123456789ab"
+  },
+  "categoryId": {
+    "$oid": "69aac403ad02fd965eccdf2b"
+  },
+  "stt": "21"
+},
+{
+  "_id": {
+    "$oid": "68d39983d74d38db80805632"
+  },
+  "desc": "Phụ kiện bóng đá",
+  "createdAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "sold": 3,
+  "ten": "Găng tay thủ môn iwin",
+  "mota": "ra mắt thị trường găng tay thủ môn Việt Nam vào năm 2022, là sản phẩm đi đầu thị trường ở phần khúc găng tay giá tầm trung (dưới 400k). Với doanh số bán hàng kỷ lục hơn 15.000 đôi và tiếp tục gia tăng phiên bản găng tay iWin Keepa A được đánh giá là sản phẩm phù hợp với các thủ môn chơi phong trào.\n\nTiếp nối sự thành công của phiên bản iWin Keepa A đầu tiên, Thể thao iWin tiếp tục cho ra mắt  phiên bản mới iWin Keepa A02 với nhiều cải tiến ấn tượng:\n\nĐỘ BỀN CAO: Sử dụng Mút Latex PK-ONEs dày 4mm siêu bề, được cải tiến hơn về độ bám dính so với các phiên bản iWin Keepa và iWin Keepa VT giúp bắt dính bóng hơn. Kiểu cắt “NEGATIVE” & “HYBRID” ôm tay cho cảm giác bắt bóng chân thực.",
+  "trangthai": "instock",
+  "deleted_at": null,
+  "ten_loai": "Thể thao",
+  "id_thuonghieu": {
+    "$oid": "65f1a9c2e4b0c123456789ab"
+  },
+  "categoryId": {
+    "$oid": "69aac403ad02fd965eccdf2b"
+  },
+  "stt": "24"
+},
+{
+  "_id": {
+    "$oid": "68d3f7d2ade5deb10140b3c7"
+  },
+  "desc": "Phụ kiện bóng chuyền",
+  "createdAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "ten": "Quả bóng chuyền Dragon DG300",
+  "mota": " Chất liệu : Da PU\n\n♢ Chu vi : 650 - 670 mm.   \n\n♢ Trọng Lượng : 260 - 280 gram   \n\n♢ Độ nảy: 90 - 120 cm   ",
+  "trangthai": "instock",
+  "deleted_at": null,
+  "ten_loai": "Thể thao",
+  "id_thuonghieu": {
+    "$oid": "65f1a9c2e4b0c123456789ab"
+  },
+  "categoryId": {
+    "$oid": "69aac403ad02fd965eccdf2b"
+  },
+  "stt": "25"
+},
+{
+  "_id": {
+    "$oid": "69abdf0806b776fb60e9176c"
+  },
+  "desc": "Áo Đá Bóng Nam Adidas Liverpool Fc Sân Thứ Ba",
+  "createdAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "ten": "Áo Đá Bóng Nam Adidas Liverpool Fc Sân Thứ Ba",
+  "mota": "– Kết cấu vải mềm poly chống co rút tốt và không nhăn, không xù, không nhão\\n– Khô, thoáng, nhẹ với công nghệ đệt 2 mặt tạo lỗ thoáng khí giúp thoát nhiệt nhanh\\n– Thiết kế chi tiết đặc trưng hoa văn QATAR chìm tạo thêm điểm nhấn cao cấp cho chiếc áo\\n– Phối viền cổ trẻ trung, đơn giản\\n– Đường may đều, chắc chắn, không bục chỉ\\n– Khả năng chống bụi bẩn tốt, dễ giặt, nhanh khô\\n– Màu sắc đa dạng, bền màu, phản sáng tốt\"\n",
+  "trangthai": "instock",
+  "deleted_at": null,
+  "ten_loai": "ao-bong-da",
+  "id_thuonghieu": {
+    "$oid": "65f1a9c2e4b0c123456789ab"
+  },
+  "categoryId": {
+    "$oid": "700000000000000000000002"
+  },
+  "stt": "26"
+},
+{
+  "_id": {
+    "$oid": "69abe45006b776fb60e91799"
+  },
+  "desc": "Áo Đá Bóng Nam Nike Liverpool Fc Sân Nhà",
+  "createdAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T08:00:00.000Z"
+  },
+  "ten": "Áo Đá Bóng Nam Nike Liverpool Fc Sân Nhà",
+  "mota": "– Kết cấu vải mềm poly chống co rút tốt và không nhăn, không xù, không nhão\\n– Khô, thoáng, nhẹ với công nghệ đệt 2 mặt tạo lỗ thoáng khí giúp thoát nhiệt nhanh\\n– Thiết kế chi tiết đặc trưng hoa văn QATAR chìm tạo thêm điểm nhấn cao cấp cho chiếc áo\\n– Phối viền cổ trẻ trung, đơn giản\\n– Đường may đều, chắc chắn, không bục chỉ\\n– Khả năng chống bụi bẩn tốt, dễ giặt, nhanh khô\\n– Màu sắc đa dạng, bền màu, phản sáng tốt\"\n",
+  "trangthai": "instock",
+  "deleted_at": null,
+  "ten_loai": "ao-bong-da",
+  "id_thuonghieu": {
+    "$oid": "65f1a9c2e4b0c123456789ab"
+  },
+  "categoryId": {
+    "$oid": "700000000000000000000002"
+  },
+  "stt": "27"
+}]

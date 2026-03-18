@@ -1,0 +1,123 @@
+.reviews {
+  margin-top: 40px;
+
+  .avg {
+    font-size: 14px;
+    color: #f59e0b;
+    margin-left: 10px;
+  }
+
+  .stars {
+    i {
+      color: #ddd;
+      cursor: pointer;
+      &.active {
+        color: #f59e0b;
+      }
+    }
+  }
+
+  .review-form {
+    margin-bottom: 20px;
+
+    textarea {
+      width: 100%;
+      min-height: 80px;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+    button {
+      padding: 8px 16px;
+      background: #111;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+  }
+
+  .review-item {
+    border-top: 1px solid #eee;
+    padding: 12px 0;
+
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    p {
+      margin: 6px 0;
+    }
+
+    small {
+      color: #888;
+    }
+  }
+}
+.review-section {
+  margin-top: 20px;
+}
+
+.stars span {
+  color: #ccc;
+  font-size: 20px;
+  cursor: default;
+}
+
+.rating-select {
+  display: flex;
+  gap: 6px;
+}
+
+.rating-select span {
+  font-size: 26px;
+  color: #ddd;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  user-select: none;
+}
+
+/* ⭐ SAO ĐÃ CHỌN */
+.rating-select span.active {
+  color: #f5a623;
+}
+
+/* ⭐ HOVER PREVIEW */
+.rating-select span:hover {
+  color: #f5a623;
+}
+
+/* ⭐ TÔ TỪ TRÁI SANG KHI HOVER */
+.rating-select span:hover ~ span {
+  color: #ddd;
+}
+
+
+.review-item {
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.review-comment {
+  margin: 8px 0;
+}
+
+.review-form textarea {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.btn-submit {
+  background: #111;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}

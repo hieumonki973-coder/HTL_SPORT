@@ -1,0 +1,164 @@
+<header class="kw-header" [class.is-scrolled]="isScrolled" [class.is-home]="isHomePage">
+  <div class="kw-container">
+
+    <!-- Logo -->
+    <a routerLink="/" class="kw-logo" aria-label="Home">
+      <img src="assets/img/logoheader.png" alt="HTL Sport" />
+    </a>
+
+    <!-- MENU -->
+    <nav class="kw-nav">
+      <a routerLink="/" class="kw-mega-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        TRANG CHỦ
+      </a>
+
+      <!-- ============================= -->
+      <!-- MEGA MENU : ÁO ĐÁ BÓNG -->
+      <!-- ============================= -->
+      <div class="kw-drop mega" [class.open]="openMenu === 'ao'" *ngIf="aoDaBongParent">
+        <a href="javascript:void(0)" class="kw-toplink" (click)="toggleMenu('ao', $event)">
+          {{ aoDaBongParent.ten | uppercase }}
+          <i class="fa-solid fa-angle-down"></i>
+        </a>
+
+        <div class="kw-mega" [class.show]="openMenu === 'ao'" (click)="$event.stopPropagation()">
+          <div class="kw-mega-inner">
+            <div class="kw-mega-col left">
+              <a class="kw-mega-link" *ngFor="let item of aoDaBongChildren" [routerLink]="['/product']"
+                [queryParams]="{ danhmuc: item._id }" (click)="closeMenus()">
+                {{ item.ten }}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================= -->
+      <!-- MENU : CẦU LÔNG - PICKLEBALL -->
+      <!-- ============================= -->
+
+
+      <div class="kw-drop mega" [class.open]="openMenu === 'cl'" *ngIf="aoDaBongParent">
+        <a href="javascript:void(0)" class="kw-toplink" (click)="toggleMenu('cl', $event)">
+          {{ cauLongParent.ten | uppercase }}
+          <i class="fa-solid fa-angle-down"></i>
+        </a>
+
+        <div class="kw-mega" [class.show]="openMenu === 'cl'" (click)="$event.stopPropagation()">
+          <div class="kw-mega-inner">
+            <div class="kw-mega-col left">
+              <a class="kw-mega-link" *ngFor="let item of cauLongChildren" [routerLink]="['/product']"
+                [queryParams]="{ danhmuc: item._id }" (click)="closeMenus()">
+                {{ item.ten }}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MENU THƯỜNG -->
+      <a *ngIf="giayBongDaParent" [routerLink]="['/product']" [queryParams]="{ danhmuc: giayBongDaParent._id }">
+        {{ giayBongDaParent.ten | uppercase }}
+      </a>
+
+      <a *ngIf="aoBongChuyenParent" [routerLink]="['/product']" [queryParams]="{ danhmuc: aoBongChuyenParent._id }">
+        {{ aoBongChuyenParent.ten | uppercase }}
+      </a>
+
+      <a *ngIf="phuKienParent" [routerLink]="['/product']" [queryParams]="{ danhmuc: phuKienParent._id }">
+        {{ phuKienParent.ten | uppercase }}
+      </a>
+    </nav>
+
+    <!-- ACTIONS -->
+    <div class="kw-actions">
+      <a [routerLink]="['/cart']" class="kw-icon" aria-label="Cart">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="badge" *ngIf="cartQuantity > 0">
+          {{ cartQuantity }}
+        </span>
+      </a>
+
+      <button class="kw-icon" type="button" (click)="toggleSearch()" aria-label="Search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+
+      <div class="kw-search" [class.show]="showSearch" (mouseleave)="onSearchLeave()">
+        <input type="text" placeholder="Tìm kiếm..." [(ngModel)]="keyword" (keyup.enter)="onSearch()" />
+      </div>
+
+      <div class="kw-account">
+        <!-- chưa đăng nhập -->
+        <a [routerLink]="['/login']" class="nav-user" *ngIf="!isLogin" aria-label="Đăng nhập">
+          <i class="fa-solid fa-user"></i>
+        </a>
+
+        <!-- đã đăng nhập -->
+        <div class="account-dropdown" *ngIf="isLogin" [class.show]="showAccountMenu">
+          <button type="button" class="account-trigger" (click)="toggleAccountMenu($event)" aria-label="Tài khoản">
+            <i class="fa-solid fa-user"></i>
+          </button>
+
+          <div class="account-menu" (click)="$event.stopPropagation()">
+            <div class="account-menu-head">
+              Xin chào {{ isLogin.fullname }}
+            </div>
+
+            <a *ngIf="isADM" (click)="goToAndClose('/admin/dashboard')">
+              Trang quản trị
+            </a>
+
+            <a (click)="goToAndClose('/user-info')">
+              Thông tin cá nhân
+            </a>
+
+            <button type="button" (click)="logoutAndClose()">
+              Đăng xuất
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="kw-spacer" *ngIf="!isHomePage"></div>
+
+<section class="kw-hero" *ngIf="isHomePage" [style.backgroundImage]="'url(' + getCurrentBannerImage() + ')'">
+  <div class="kw-hero-overlay"></div>
+
+  <div class="kw-hero-inner">
+    <div class="kw-hero-content">
+      <h1>RIÊNG<br>PHONG CÁCH</h1>
+
+      <p>
+        Ra sân thật khác biệt, sẵn sàng khoác lên mình bộ áo đấu mới toanh,
+        sẵn sàng cùng đồng đội chinh phục thử thách.
+      </p>
+
+      <div class="kw-hero-btns">
+        <a [routerLink]="['/product']" class="btn primary">
+          XEM NGAY
+        </a>
+
+        <a [routerLink]="['/product']" [queryParams]="aoDaBongParent ? { danhmuc: aoDaBongParent._id } : null"
+          class="btn ghost">
+          ÁO BÓNG ĐÁ
+        </a>
+      </div>
+
+      <div class="kw-dots" *ngIf="bannerImages?.length > 1">
+        <button type="button" class="dot" *ngFor="let img of bannerImages; let i = index"
+          [class.active]="i === currentBannerIndex" (click)="goToBanner(i)"></button>
+      </div>
+    </div>
+  </div>
+
+  <button class="kw-arrow prev" type="button" (click)="prevBanner()" *ngIf="bannerImages?.length > 1">
+    <i class="fa-solid fa-angle-left"></i>
+  </button>
+
+  <button class="kw-arrow next" type="button" (click)="nextBanner()" *ngIf="bannerImages?.length > 1">
+    <i class="fa-solid fa-angle-right"></i>
+  </button>
+</section>

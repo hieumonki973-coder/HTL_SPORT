@@ -1,0 +1,251 @@
+<div class="header-info">
+      <h1>Quản lý tin tức</h1>
+      <p class="subtitle">Quản lý và chỉnh sửa các bài viết tin tức</p>
+    </div>
+<div class="news-management">
+
+  <!-- Header with Stats -->
+    <div class="header-actions">
+      <button class="btn-primary" (click)="openAddModal()">
+        <span class="las la-plus"></span>
+        Thêm tin mới
+      </button>
+    </div>
+
+
+  <!-- Search and Filter -->
+  <div class="search-section">
+    <div class="search-box">
+      <span class="las la-search search-icon"></span>
+      <input
+        type="text"
+        placeholder="Tìm kiếm tin tức..."
+        [(ngModel)]="searchTerm"
+        (input)="onSearch()"
+        class="search-input"
+      />
+    </div>
+    <div class="filter-actions">
+      <div class="results-count">
+        <span class="total-count">{{ totalItems }} kết quả</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading Spinner -->
+  <div *ngIf="isLoading && newsList.length === 0" class="loading-spinner">
+    <div class="spinner"></div>
+    <p>Đang tải...</p>
+  </div>
+
+  <!-- News Table -->
+  <div *ngIf="!isLoading || newsList.length > 0" class="table-container">
+    <div class="table-responsive">
+      <table class="news-table">
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Tiêu đề</th>
+            <th>Mô tả</th>
+            <th>Ngày tạo</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let news of paginatedNews; let i = index" class="table-row">
+            <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
+            <td class="title-cell">
+              <div class="news-title">{{ news.title }}</div>
+              <div *ngIf="news.image" class="news-image-preview">
+                <img [src]="news.image" alt="Preview" class="preview-img"
+                     (error)="$event.target.style.display='none'" />
+              </div>
+            </td>
+            <td class="description-cell">
+              <p>{{ truncateText(news.description || news.content, 80) }}</p>
+            </td>
+            <td class="date-cell">
+              {{ formatDate(news.createdAt) }}
+            </td>
+            <td class="actions-cell">
+              <div class="action-buttons">
+                <button
+                  class="btn-edit"
+                  (click)="openEditModal(news)"
+                  title="Chỉnh sửa"
+                >
+                  <span class="las la-edit"></span>
+                </button>
+                <button
+                  class="btn-delete"
+                  (click)="deleteNews(news._id!)"
+                  title="Xóa"
+                >
+                  <span class="las la-trash"></span>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr *ngIf="paginatedNews.length === 0 && !isLoading">
+            <td colspan="5" class="no-data">
+              <div class="empty-state">
+<span class="las la-newspaper empty-icon"></span>
+                <p>{{ searchTerm ? 'Không tìm thấy tin tức phù hợp' : 'Chưa có tin tức nào' }}</p>
+                <button *ngIf="!searchTerm" class="btn-primary" (click)="openAddModal()">
+                  <span class="las la-plus"></span>
+                  Thêm tin tức đầu tiên
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Loading overlay for table -->
+    <div *ngIf="isLoading && newsList.length > 0" class="table-loading">
+      <div class="spinner small"></div>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div *ngIf="totalPages > 1" class="pagination">
+    <button
+      class="page-btn"
+      [disabled]="currentPage === 1"
+      (click)="goToPage(1)"
+      title="Trang đầu"
+    >
+      <span class="las la-angle-double-left"></span>
+    </button>
+
+    <button
+      class="page-btn"
+      [disabled]="currentPage === 1"
+      (click)="goToPage(currentPage - 1)"
+      title="Trang trước"
+    >
+      <span class="las la-angle-left"></span>
+    </button>
+
+    <button
+      *ngFor="let page of getPages()"
+      class="page-btn"
+      [class.active]="page === currentPage"
+      (click)="goToPage(page)"
+    >
+      {{ page }}
+    </button>
+
+    <button
+      class="page-btn"
+      [disabled]="currentPage === totalPages"
+      (click)="goToPage(currentPage + 1)"
+      title="Trang sau"
+    >
+      <span class="las la-angle-right"></span>
+    </button>
+
+    <button
+      class="page-btn"
+      [disabled]="currentPage === totalPages"
+      (click)="goToPage(totalPages)"
+      title="Trang cuối"
+    >
+      <span class="las la-angle-double-right"></span>
+    </button>
+
+    <div class="page-info">
+      Trang {{ currentPage }} / {{ totalPages }}
+    </div>
+  </div>
+</div>
+
+<!-- Modal for Add/Edit News -->
+<div *ngIf="isModalOpen" class="modal-overlay" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3>{{ isEditMode ? 'Chỉnh sửa tin tức' : 'Thêm tin tức mới' }}</h3>
+      <button class="close-btn" (click)="closeModal()">
+        <span class="las la-times"></span>
+      </button>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" class="news-form" #newsFormRef="ngForm">
+      <div class="form-group">
+        <label for="title">Tiêu đề <span class="required">*</span></label>
+        <input
+          type="text"
+          id="title"
+          [(ngModel)]="newsForm.title"
+          name="title"
+          required
+          class="form-input"
+          placeholder="Nhập tiêu đề bài viết"
+          maxlength="200"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Mô tả ngắn</label>
+        <input
+          type="text"
+          id="description"
+          [(ngModel)]="newsForm.description"
+          name="description"
+          class="form-input"
+placeholder="Nhập mô tả ngắn (tùy chọn)"
+          maxlength="300"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="image">Đường dẫn hình ảnh</label>
+        <input
+          type="url"
+          id="image"
+          [(ngModel)]="newsForm.image"
+          name="image"
+          class="form-input"
+          placeholder="https://example.com/image.jpg"
+        />
+        <div *ngIf="newsForm.image" class="image-preview">
+          <img [src]="newsForm.image" alt="Preview"
+               (error)="$event.target.style.display='none'" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="content">Nội dung <span class="required">*</span></label>
+        <textarea
+          id="content"
+          [(ngModel)]="newsForm.content"
+          name="content"
+          required
+          class="form-textarea"
+          placeholder="Nhập nội dung bài viết"
+          rows="10"
+        ></textarea>
+        <div class="char-count">
+          {{ newsForm.content?.length || 0 }} ký tự
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn-cancel" (click)="closeModal()">
+          <span class="las la-times"></span>
+          Hủy
+        </button>
+        <button
+          type="submit"
+          class="btn-save"
+          [disabled]="isLoading || !newsFormRef.form.valid"
+        >
+          <span *ngIf="isLoading" class="las la-spinner la-spin"></span>
+          <span *ngIf="!isLoading" class="las la-save"></span>
+          {{ isEditMode ? 'Cập nhật' : 'Thêm mới' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

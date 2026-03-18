@@ -1,0 +1,150 @@
+<section class="banner">
+  <!-- Form Container -->
+  <div class="form-container">
+    <div class="col col-1" [ngStyle]="{'border-radius': col1BorderRadius}">
+    <div class="image-layer">
+        <img src="/assets/img/beyono.png" class="form-image-main">
+        <img src="/assets/img/dots.png" class="form-image dots">
+        <img src="/assets/img/coin.png" class="form-image coin">
+        <img src="/assets/img/white-outline.png" class="form-image rocket">
+        <img src="/assets/img/spring.png" class="form-image spring">
+        <img src="/assets/img/cloud.png" class="form-image cloud">
+        <img src="/assets/img/stars.png" class="form-image stars">
+      </div>
+      <p class="featured-words">Đăng ký ngay! </p>
+    </div>
+    <div class="col col-2">
+      <div class="btn-box">
+        <button class="btn" [ngClass]="{'btn-1': showLogin}" (click)="toggleForm(true)">Đăng nhập</button>
+        <button class="btn" [ngClass]="{'btn-1': !showLogin}" (click)="toggleForm(false)">Đăng ký</button>
+      </div>
+
+      <!-- Login Form -->
+      <form class="login-form" [ngClass]="{'auth-active': showLogin, 'auth-hidden': !showLogin}" [formGroup]="loginForm"
+        (ngSubmit)="onLogin()">
+        <div class="form-title">
+          <span>Đăng nhập</span>
+        </div>
+        <div class="form-inputs">
+          <div class="input-box">
+            <input type="text" class="input-field" placeholder="Tên đăng nhập" formControlName="name" required>
+            <i class="bx bx-user icon"></i>
+            <div *ngIf="loginForm.get('name')?.hasError('required') && loginForm.get('name')?.touched"
+              class="auth-error">
+              Vui lòng nhập tên đăng nhập.
+            </div>
+            <div *ngIf="loginForm.get('name')?.hasError('minlength') && loginForm.get('name')?.touched"
+              class="auth-error">
+              Tên đăng nhập phải có ít nhất 6 ký tự.
+            </div>
+          </div>
+          <div class="input-box">
+            <input type="password" class="input-field" placeholder="Mật Khẩu" formControlName="password" required>
+            <i class="bx bx-lock-alt icon"></i>
+            <div *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched"
+              class="auth-error">
+              Vui lòng nhập mật khẩu.
+            </div>
+            <div *ngIf="loginForm.get('password')?.hasError('minlength') && loginForm.get('password')?.touched"
+              class="auth-error">
+              Mật khẩu phải có ít nhất 6 ký tự.
+            </div>
+          </div>
+          <div class="forgot-pass">
+            <a href="/">Bạn quên mật khẩu?</a>
+          </div>
+          <div class="input-box">
+            <button class="input-submit" type="submit" [disabled]="loading">
+              <span>Đăng nhập</span>
+              <i class="bx bx-right-arrow-alt"></i>
+            </button>
+          </div>
+        </div>
+        <div class="social-login">
+          <i class="bx bxl-google"></i>
+          <i class="bx bxl-facebook"></i>
+          <i class="bx bxl-twitter"></i>
+          <i class="bx bxl-github"></i>
+        </div>
+      </form>
+
+      <!-- Register Form -->
+      <form class="register-form" [ngClass]="{'auth-active': !showLogin, 'auth-hidden': showLogin}"
+        [formGroup]="registerF" (ngSubmit)="onRegister()">
+        <div class="form-title">
+          <span>Đăng ký tài khoản</span>
+        </div>
+        <div class="form-inputs">
+          <div class="input-box">
+            <input type="text" class="input-field" placeholder="Tên đăng nhập" formControlName="name" required>
+            <i class="bx bx-user icon"></i>
+            <div *ngIf="registerF.get('name')?.hasError('required') && registerF.get('name')?.touched"
+              class="auth-error">
+              Vui lòng nhập tên đăng nhập.
+            </div>
+            <div *ngIf="registerF.get('name')?.hasError('minlength') && registerF.get('name')?.touched"
+              class="auth-error">
+              Tên đăng nhập phải có ít nhất 6 ký tự.
+            </div>
+          </div>
+          <div class="input-box">
+            <input type="text" class="input-field" placeholder="Họ và Tên" formControlName="fullName" required>
+            <i class="bx bx-user icon"></i>
+            <div *ngIf="registerF.get('fullName')?.hasError('required') && registerF.get('fullName')?.touched"
+              class="auth-error">
+              Vui lòng nhập họ và tên.
+            </div>
+          </div>
+          <div class="input-box">
+            <input type="email" class="input-field" placeholder="Email" formControlName="email" required>
+            <i class="bx bx-envelope icon"></i>
+            <!-- Email error messages hidden -->
+          </div>
+          <div class="input-box">
+            <input type="text" class="input-field" placeholder="Số điện thoại" formControlName="phone" required>
+            <i class="bx bx-phone icon"></i>
+            <div *ngIf="registerF.get('phone')?.hasError('required') && registerF.get('phone')?.touched"
+              class="auth-error">
+              Vui lòng nhập số điện thoại.
+            </div>
+          </div>
+          <div class="input-box password-box">
+            <input type="password" class="input-field" placeholder="Mật Khẩu" formControlName="password" required>
+            <i class="bx bx-lock-alt icon"></i>
+            <div *ngIf="registerF.get('password')?.hasError('required') && registerF.get('password')?.touched"
+              class="auth-error">
+              Vui lòng nhập mật khẩu.
+            </div>
+            <div *ngIf="registerF.get('password')?.hasError('minlength') && registerF.get('password')?.touched"
+              class="auth-error">
+              Mật khẩu phải có ít nhất 6 ký tự.
+            </div>
+            <input type="password" class="input-field" placeholder="Nhập lại mật khẩu" formControlName="rePassword"
+              required>
+            <i class="bx bx-lock-alt icon"></i>
+            <div *ngIf="registerF.get('rePassword')?.hasError('required') && registerF.get('rePassword')?.touched"
+              class="auth-error">
+              Vui lòng nhập lại mật khẩu.
+            </div>
+            <div *ngIf="registerF.hasError('mismatch') && registerF.get('rePassword')?.touched" class="auth-error">
+              Mật khẩu nhập lại không khớp.
+            </div>
+          </div>
+
+          <div class="input-box">
+            <button class="input-submit" type="submit" [disabled]="loading">
+              <span>Đăng ký</span>
+              <i class="bx bx-right-arrow-alt"></i>
+            </button>
+          </div>
+        </div>
+        <div class="social-login">
+          <i class="bx bxl-google"></i>
+          <i class="bx bxl-facebook"></i>
+          <i class="bx bxl-twitter"></i>
+          <i class="bx bxl-github"></i>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

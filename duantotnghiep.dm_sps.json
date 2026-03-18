@@ -1,0 +1,260 @@
+[{
+  "_id": {
+    "$oid": "66a333333333333333333333"
+  },
+  "id_sanpham": {
+    "$oid": "68c29b5feb32ca8f85d340c5"
+  },
+  "id_danhmuc": {
+    "$oid": "66a111111111111111111111"
+  },
+  "ten": "bilia",
+  "id_loaisanpham": "01"
+},
+{
+  "_id": {
+    "$oid": "696db6a07f5ab345bfea118b"
+  },
+  "id_sanpham": {
+    "$oid": "68c2a15feb32ca8f85d340c8"
+  },
+  "id_danhmuc": {
+    "$oid": "696d8a757f5ab345bfea10d3"
+  },
+  "ten": "đồ cầu lông",
+  "id_loaisanpham": "02"
+},
+{
+  "_id": {
+    "$oid": "696de2557f5ab345bfea11bc"
+  },
+  "id_sanpham": {
+    "$oid": "68c8f061e6f7e8c51e24f146"
+  },
+  "id_danhmuc": {
+    "$oid": "696d8a757f5ab345bfea10d3"
+  },
+  "ten": "đồ cầu lông",
+  "id_loaisanpham": "03"
+},
+{
+  "_id": {
+    "$oid": "696defa47f5ab345bfea11d6"
+  },
+  "id_sanpham": {
+    "$oid": "68c8f813e6f7e8c51e24f151"
+  },
+  "id_danhmuc": {
+    "$oid": "696d8a757f5ab345bfea10d3"
+  },
+  "ten": "đồ cầu lông",
+  "id_loaisanpham": "09"
+},
+{
+  "_id": {
+    "$oid": "696defbc7f5ab345bfea11d9"
+  },
+  "id_sanpham": {
+    "$oid": "68c8f8dde6f7e8c51e24f152"
+  },
+  "id_danhmuc": {
+    "$oid": "696d8a757f5ab345bfea10d3"
+  },
+  "ten": "đồ cầu lông",
+  "id_loaisanpham": "10"
+},
+{
+  "_id": {
+    "$oid": "696e05537f5ab345bfea1238"
+  },
+  "id_sanpham": {
+    "$oid": "68c8f23ee6f7e8c51e24f149"
+  },
+  "id_danhmuc": {
+    "$oid": "696db66a7f5ab345bfea1188"
+  },
+  "ten": "Đồ đá banh",
+  "id_loaisanpham": "04"
+},
+{
+  "_id": {
+    "$oid": "696e05a97f5ab345bfea123d"
+  },
+  "id_sanpham": {
+    "$oid": "68c8f310e6f7e8c51e24f14a"
+  },
+  "id_danhmuc": {
+    "$oid": "696db66a7f5ab345bfea1188"
+  },
+  "ten": "Đồ đá banh",
+  "id_loaisanpham": "05"
+},
+{
+  "_id": {
+    "$oid": "696e05cc7f5ab345bfea1240"
+  },
+  "id_sanpham": {
+    "$oid": "68c8f9fce6f7e8c51e24f154"
+  },
+  "id_danhmuc": {
+    "$oid": "696db66a7f5ab345bfea1188"
+  },
+  "ten": "Đồ đá banh",
+  "id_loaisanpham": ""
+},
+{
+  "_id": {
+    "$oid": "696e05e67f5ab345bfea1243"
+  },
+  "id_sanpham": {
+    "$oid": "68c8fa76e6f7e8c51e24f155"
+  },
+  "id_danhmuc": {
+    "$oid": "696db66a7f5ab345bfea1188"
+  },
+  "ten": "Đồ đá banh",
+  "id_loaisanpham": ""
+},
+{
+  "_id": {
+    "$oid": "696e05f57f5ab345bfea1246"
+  },
+  "id_sanpham": {
+    "$oid": "68c8fae5e6f7e8c51e24f156"
+  },
+  "id_danhmuc": {
+    "$oid": "696db66a7f5ab345bfea1188"
+  },
+  "ten": "Đồ đá banh",
+  "id_loaisanpham": ""
+},
+{
+  "_id": {
+    "$oid": "696e06067f5ab345bfea1249"
+  },
+  "id_sanpham": {
+    "$oid": "68c8fb4ae6f7e8c51e24f157"
+  },
+  "id_danhmuc": {
+    "$oid": "696db66a7f5ab345bfea1188"
+  },
+  "ten": "Đồ đá banh",
+  "id_loaisanpham": ""
+},
+{
+  "_id": {
+    "$oid": "696e061e7f5ab345bfea124c"
+  },
+  "id_sanpham": {
+    "$oid": "68c8fb89e6f7e8c51e24f158"
+  },
+  "id_danhmuc": {
+    "$oid": "66a111111111111111111111"
+  },
+  "ten": "bilia",
+  "id_loaisanpham": ""
+},
+{
+  "_id": {
+    "$oid": "69736dcbc3fd1b5d0603039a"
+  },
+  "id_sanpham": {
+    "$oid": "68c8f5e9e6f7e8c51e24f14d"
+  },
+  "id_danhmuc": {
+    "$oid": "66a111111111111111111111"
+  },
+  "ten": "bilia",
+  "id_loaisanpham": ""
+},
+{
+  "_id": {
+    "$oid": "69736e16c3fd1b5d0603039e"
+  },
+  "id_sanpham": {
+    "$oid": "68c8fc4ae6f7e8c51e24f159"
+  },
+  "id_danhmuc": {
+    "$oid": "66a111111111111111111111"
+  },
+  "ten": "bilia",
+  "id_loaisanpham": ""
+},
+{
+  "_id": {
+    "$oid": "69736f02c3fd1b5d060303a4"
+  },
+  "id_sanpham": {
+    "$oid": "68d3f7d2ade5deb10140b3c7"
+  },
+  "id_danhmuc": {
+    "$oid": "696db6887f5ab345bfea1189"
+  },
+  "ten": "bóng chuyền",
+  "id_loaisanpham": ""
+},
+{
+  "_id": {
+    "$oid": "69737089c3fd1b5d060303ab"
+  },
+  "id_sanpham": {
+    "$oid": "68d3986fd74d38db80805630"
+  },
+  "id_danhmuc": {
+    "$oid": "696db6887f5ab345bfea1189"
+  },
+  "ten": "bóng chuyền",
+  "id_loaisanpham": ""
+},
+{
+  "_id": {
+    "$oid": "69737103c3fd1b5d060303ae"
+  },
+  "id_sanpham": {
+    "$oid": "68c8f970e6f7e8c51e24f153"
+  },
+  "id_danhmuc": {
+    "$oid": "696db6887f5ab345bfea1189"
+  },
+  "ten": "bóng chuyền",
+  "id_loaisanpham": ""
+},
+{
+  "_id": {
+    "$oid": "69737131c3fd1b5d060303b0"
+  },
+  "id_sanpham": {
+    "$oid": "68c8f548e6f7e8c51e24f14c"
+  },
+  "id_danhmuc": {
+    "$oid": "696db6887f5ab345bfea1189"
+  },
+  "ten": "bóng chuyền",
+  "id_loaisanpham": ""
+},
+{
+  "_id": {
+    "$oid": "697371cfc3fd1b5d060303b6"
+  },
+  "id_sanpham": {
+    "$oid": "68d39983d74d38db80805632"
+  },
+  "id_danhmuc": {
+    "$oid": "696db66a7f5ab345bfea1188"
+  },
+  "ten": "Đồ đá banh",
+  "id_loaisanpham": ""
+},
+{
+  "_id": {
+    "$oid": "6973722cc3fd1b5d060303b8"
+  },
+  "id_sanpham": {
+    "$oid": "68d39c8ed74d38db80805633"
+  },
+  "id_danhmuc": {
+    "$oid": "696db66a7f5ab345bfea1188"
+  },
+  "ten": "Đồ đá banh",
+  "id_loaisanpham": ""
+}]

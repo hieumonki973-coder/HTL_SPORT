@@ -1,0 +1,88 @@
+.product-management-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 40px auto;
+  gap: 30px;
+  padding: 0 20px;
+}
+
+.sidebar {
+  width: 250px;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+}
+
+.sidebar h3 {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.menu {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.menu li {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.menu li:hover,
+.menu .active {
+  color: #ffa500;
+  font-weight: 600;
+}
+
+.product-content {
+  flex: 1;
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+}
+
+.product-content h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.product-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.product-table th,
+.product-table td {
+  border: 1px solid #eee;
+  padding: 12px;
+  text-align: center;
+}
+
+.product-table th {
+  background: #f8f8f8;
+  font-weight: 600;
+}
+
+.product-table img {
+  width: 60px;
+  height: auto;
+  object-fit: cover;
+}
+
+.product-table button {
+  padding: 6px 10px;
+  margin: 0 4px;
+  border: none;
+  border-radius: 4px;
+  background: #ffa500;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.product-table button:hover {
+  background: #e69500;
+}

@@ -1,0 +1,58 @@
+<!-- Line Awesome CDN -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css"
+/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<div class="flex bg-gray-100">
+  <input type="checkbox" name="" id="sidebar-toggle">
+  <div class="sidebar">
+    <!-- <div class="sidebar-brand">
+      <div class="brand-flex">
+        <div class="brand-icons">
+          <span class="las la-bell"></span>
+        </div>
+      </div>
+    </div> -->
+    <div class="sidebar-main">
+      <div class="sidebar-user">
+        <img src="../../../assets/img/admin.jpg" alt="Logo" class="logo">
+        <div>
+          <h3>Hiếu</h3>
+          <span>Hieumonki4gmail.com</span>
+        </div>
+      </div>
+      <div class="sidebar-menu">
+        <div class="menu-head">
+          <span class="las la-bars">Dashboard</span>
+        </div>
+        <ul>
+          <li><a [routerLink]="['/admin/dashboard']" routerLinkActive="active"><span class="las la-tachometer-alt"></span>Dashboard</a></li>
+          <li><a [routerLink]="['/admin/users']" routerLinkActive="active"><span class="las la-users"></span>Người dùng</a></li>
+          <li><a [routerLink]="['/admin/orders']" routerLinkActive="active"><span class="las la-shopping-cart"></span>Đơn hàng</a></li>
+          <li><a [routerLink]="['/admin/categories']" routerLinkActive="active"><span class="las la-tags"></span>Danh mục</a></li>
+          <li><a [routerLink]="['/admin/products']" routerLinkActive="active"><span class="las la-headset"></span>Sản phẩm</a></li>
+          <li><a [routerLink]="['/admin/news']" routerLinkActive="active"><span class="las la-newspaper"></span>Tin tức</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="main-content w-full">
+    <header>
+      <div class="menu-toggle">
+        <label for="sidebar-toggle">
+          <span class="las la-bars"></span>
+        </label>
+      </div>
+      <div class="header-right">
+        <span class="las la-search"></span>
+        <span class="las la-bookmark"></span>
+        <span class="las la-sms"></span>
+      </div>
+    </header>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

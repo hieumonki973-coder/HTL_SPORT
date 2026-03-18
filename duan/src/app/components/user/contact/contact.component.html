@@ -1,0 +1,25 @@
+<div class="contact-wrapper">
+  <!-- Nội dung chính -->
+  <div class="contact-main">
+    <!-- Bên trái -->
+    <div class="contact-left">
+
+      <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+        <h3>Liên hệ với chúng tôi</h3>
+        <input type="text" name="name" [(ngModel)]="contact.name" placeholder="Họ và tên" required />
+        <input type="tel" name="phone" [(ngModel)]="contact.phone" placeholder="Số điện thoại" required />
+        <input type="email" name="email" [(ngModel)]="contact.email" placeholder="Email" required />
+        <textarea name="message" [(ngModel)]="contact.message" placeholder="Nội dung" required></textarea>
+        <button type="submit" [disabled]="!contactForm.valid">Gửi liên hệ</button>
+      </form>
+    </div>
+
+    <!-- Bên phải: Google Map -->
+    <div class="contact-right">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.123456789!2d106.6541643!3d10.8562399!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529b931d1b803%3A0x726505704a09fc58!2zMTI2NCBMw6ogxJDhu6ljIFRo4buNLCBHw7MgVsOgcCwgSMOgIE7hu5lp!5e0!3m2!1svi!2s!4v1234567890123"
+        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy">
+      </iframe>
+    </div>
+  </div>
+</div>
